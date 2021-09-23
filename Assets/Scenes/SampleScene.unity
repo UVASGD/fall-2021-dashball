@@ -7966,6 +7966,7 @@ GameObject:
   - component: {fileID: 430026128}
   - component: {fileID: 430026129}
   - component: {fileID: 430026130}
+  - component: {fileID: 430026131}
   m_Layer: 0
   m_Name: kickedBall
   m_TagString: Untagged
@@ -7981,9 +7982,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430026125}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.278, y: -13.052, z: 0}
+  m_LocalPosition: {x: -3.11, y: -15.17, z: 0}
   m_LocalScale: {x: 6.353928, y: 3.632787, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1533171336}
   m_Father: {fileID: 398075045}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8049,7 +8051,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb00d2fa753400459f4d74f625e6181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 53.32
+  xSpeed: 0.17
+  ySpeed: 0.39
+  speed: 0.38
+  distance: 2.82
+  target: {fileID: 384291231}
 --- !u!50 &430026129
 Rigidbody2D:
   serializedVersion: 4
@@ -8084,9 +8090,23 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.003053291, y: 0.08021024}
+  m_Offset: {x: 0.0030532859, y: -0.07167307}
   serializedVersion: 2
-  m_Radius: 0.27839953
+  m_Radius: 0.19156195
+--- !u!114 &430026131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430026125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919036cf640956547a54b9a3a42b2659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 4020132765657539517, guid: f5ec8184511d4fb46ad3de49d6756c33, type: 3}
+  spawnPoint: {fileID: 1533171336}
 --- !u!1 &452163743
 GameObject:
   m_ObjectHideFlags: 0
@@ -8460,6 +8480,36 @@ MonoBehaviour:
   ballStart: {x: 0, y: 0, z: 0}
   player: {fileID: 384291229}
   playerStart: {x: 0, y: 0, z: 0}
+--- !u!1 &1533171335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1533171336}
+  m_Layer: 0
+  m_Name: bulletSpawn
+  m_TagString: FirePoint
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1533171336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533171335}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.93, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 430026126}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1591570910
 GameObject:
   m_ObjectHideFlags: 0
