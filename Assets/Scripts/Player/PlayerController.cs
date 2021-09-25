@@ -6,9 +6,9 @@ public class PlayerController : MonoBehaviour
 {
 
     //inputs
-    public Vector2 movement;
+    public Vector2 pos;
     public Vector2 aim;
-    public bool fire;
+    private bool fire;
 
     //im sorta copying this from last year's project im 90% sure some of it is not necessary
     Rigidbody2D rb2d;
@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     public float crosshairDistance = 4;
     public Sprite neutral;
     public Sprite dash;
-    public Transform pos;
     public SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
@@ -32,7 +31,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        pos = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         fire = Input.GetMouseButton(0);
     }
@@ -49,7 +48,7 @@ public class PlayerController : MonoBehaviour
         }
         lastDash += Time.deltaTime;
 
-        rb2d.AddForce(movement * movePower);
+        rb2d.AddForce(pos * movePower);
 
 		Debug.DrawRay(transform.position, aim.normalized * crosshairDistance, Color.red);
 

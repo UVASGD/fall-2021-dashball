@@ -7728,9 +7728,9 @@ GameObject:
   m_Component:
   - component: {fileID: 384291231}
   - component: {fileID: 384291230}
-  - component: {fileID: 384291232}
   - component: {fileID: 384291235}
   - component: {fileID: 384291234}
+  - component: {fileID: 384291232}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7815,18 +7815,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d5e68d61e30284fafa7b2db636eeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {x: 0, y: 0}
+  pos: {x: 0, y: 0}
   aim: {x: 0, y: 0}
-  fire: 0
   movePower: 5
   dashCD: 1
   lastDash: 0
-  dashPower: 2
+  dashPower: 3
   crosshairs: {fileID: 452163743}
-  crosshairDistance: 5
+  crosshairDistance: 4
   neutral: {fileID: 0}
   dash: {fileID: 0}
-  pos: {fileID: 0}
   spriteRenderer: {fileID: 0}
 --- !u!50 &384291234
 Rigidbody2D:
