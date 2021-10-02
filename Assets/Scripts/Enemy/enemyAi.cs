@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +28,7 @@ public class enemyAi : MonoBehaviour
     {
         //simple move test
         //transform.position = new Vector3 (transform.position.x + xSpeed, transform.position.y + ySpeed);
-        
+
                //simple move towrds player
                 if (Vector3.Distance(transform.position,target.position)>distance)
                     transform.position = Vector3.MoveTowards(transform.position, target.position, speed);  
