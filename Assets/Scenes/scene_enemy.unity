@@ -315,6 +315,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+  damage: 25
+  swingTimer: 1
+  lastSwing: 0
+  tiedStickyButton: {fileID: 0}
 --- !u!1 &364151918
 GameObject:
   m_ObjectHideFlags: 0
@@ -7805,6 +7809,7 @@ GameObject:
   - component: {fileID: 384291232}
   - component: {fileID: 384291235}
   - component: {fileID: 384291234}
+  - component: {fileID: 384291233}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7902,6 +7907,20 @@ MonoBehaviour:
   dash: {fileID: 0}
   pos: {fileID: 0}
   spriteRenderer: {fileID: 0}
+--- !u!114 &384291233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384291229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53854bcfc1a70c442b1ae1df43993740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 44.61
+  hitPoints: 14.42
 --- !u!50 &384291234
 Rigidbody2D:
   serializedVersion: 4
@@ -8168,6 +8187,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4020132765657539517, guid: f5ec8184511d4fb46ad3de49d6756c33, type: 3}
   spawnPoint: {fileID: 1533171336}
+  target: {fileID: 384291231}
+  shootTimer: 1.78
+  lastFire: 4.65
+  offsetMin: 0
+  offsetMax: 0
 --- !u!114 &430026132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8183,6 +8207,7 @@ MonoBehaviour:
   target: {fileID: 384291231}
   speed: 505.9
   nextWaypointDistance: 0.5
+  stopChase: 2.94
 --- !u!114 &430026133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8912,6 +8937,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4020132765657539517, guid: f5ec8184511d4fb46ad3de49d6756c33, type: 3}
   spawnPoint: {fileID: 2120268769}
+  target: {fileID: 0}
+  shootTimer: 0
+  lastFire: 0
+  offsetMin: 0
+  offsetMax: 0
 --- !u!58 &1799700087
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8961,11 +8991,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb00d2fa753400459f4d74f625e6181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   xSpeed: 0.17
   ySpeed: 0.39
   speed: 0.38
   distance: 2.82
   target: {fileID: 384291231}
+  damage: 0
+  swingTimer: 0
+  lastSwing: 0
 --- !u!212 &1799700090
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -17,6 +17,8 @@ public class enemyAiPath : MonoBehaviour
     bool reachedEndofPath=false;
     Seeker seeker;
     Rigidbody2D rb;
+    //distance enemy will stop tracking player when they get this close
+    public float stopChase = 2.0f;
 
     void Start()
     {
@@ -47,11 +49,17 @@ public class enemyAiPath : MonoBehaviour
 
     void FixedUpdate()
     {   
-        //do nothing if no path
-        if (path==null || reachedEndofPath ==true)
-        return;
-        //check if reached end of path
-        if(currentWaypoint >= path.vectorPath.Count)
+        //check distance from enemy to player to stop crowding
+        float toTarget = Vector2.Distance(rb.position, target.position);
+
+        //resets path if no path or reached end of path and is far enough away from player
+        if ((path==null || reachedEndofPath ==true) & stopChase < toTarget)
+        {
+            seeker.StartPath(rb.position,target.position,OnPathComplete);
+            reachedEndofPath =false;
+        }
+        //check if reached end of path or to closer to player
+        if(currentWaypoint >= path.vectorPath.Count || stopChase > toTarget)
         {
             reachedEndofPath =true;
             return;
