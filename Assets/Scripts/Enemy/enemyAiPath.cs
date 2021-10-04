@@ -17,8 +17,15 @@ public class enemyAiPath : MonoBehaviour
     bool reachedEndofPath=false;
     Seeker seeker;
     Rigidbody2D rb;
-    //distance enemy will stop tracking player when they get this close
+    //distance enemy will stop tracking player when they get this close (and melee range)
     public float stopChase = 2.0f;
+
+
+    //melee enemy variables //from specners work in enemyAi.cs
+      //attack-y stuff
+    public float damage; //damage per attack
+    public float swingTimer; //ie how long between swings
+    public float lastSwing = 0; //the actual timer maybe I should use different names lol
 
     void Start()
     {
@@ -49,6 +56,9 @@ public class enemyAiPath : MonoBehaviour
 
     void FixedUpdate()
     {   
+        //increments the swing timer
+        lastSwing += Time.deltaTime;
+
         //check distance from enemy to player to stop crowding
         float toTarget = Vector2.Distance(rb.position, target.position);
 
@@ -61,6 +71,9 @@ public class enemyAiPath : MonoBehaviour
         //check if reached end of path or to closer to player
         if(currentWaypoint >= path.vectorPath.Count || stopChase > toTarget)
         {
+            //deal melee damage (add indicator)
+            Attack(target.GetComponent<Destructible>());
+            
             reachedEndofPath =true;
             return;
         }
@@ -83,5 +96,19 @@ public class enemyAiPath : MonoBehaviour
         {
             currentWaypoint++;
         }
+    }
+
+    //taken from spencers work in enemyAi.cs
+    private void Attack(Destructible target){
+        if (lastSwing >= swingTimer){
+            target.TakeDamage(damage);
+            lastSwing = 0;
+        }
+    }
+
+    public float giveScale()
+    {
+        //returns the distance  
+        return stopChase;
     }
 }

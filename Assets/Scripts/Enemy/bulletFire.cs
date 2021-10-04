@@ -17,8 +17,10 @@ void Start ()
 
 void OnTriggerEnter2D(Collider2D target)
 {   
-    //display name of what is hit
-    Debug.Log(target.name);
+    //turn off friendly fire
+    if (target.tag == "enemy")
+    return;
+
     //for somereason really hates camerabounds of unmoving camera
     if(target.name != "CameraBounds")
     {
