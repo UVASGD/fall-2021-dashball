@@ -6,6 +6,10 @@ public class Ball : MonoBehaviour
 {
     public GameManager gm;
 
+    public float damage = 25;
+    public float swingTimer = 1; //ie how long between "attacks" (just so it doesnt do a lot of little attacks, may have to modify this system)
+    public float lastSwing = 0; //the actual timer maybe I should use different names lol
+
     //This is for sticky buttons to hold ball in place until player hit
     public GameObject tiedStickyButton = null;
 
@@ -21,7 +25,7 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        lastSwing += Time.deltaTime;
     }
     private void FixedUpdate()
     {
@@ -39,7 +43,7 @@ public class Ball : MonoBehaviour
             gm.ResetGame();
             //temp for demo, will need to move to next scene, see gamemanager
         }
-        if (col.gameObject.name == "Portal1" ) {
+        else if (col.gameObject.name == "Portal1" ) {
             Vector2 tp = GameObject.Find("Portal2").transform.position;
             this.transform.position = tp;
         }
@@ -49,15 +53,26 @@ public class Ball : MonoBehaviour
             tiedStickyButton = col.gameObject;
         }
     }
-
-    
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         //If player hit
-        if (collision.gameObject.GetComponent<PlayerController>())
+        if (col.gameObject.GetComponent<PlayerController>())
         {
             tiedStickyButton = null;
         }
 
+        //if a non-player destructible is hit
+        else if(col.gameObject.GetComponent<Destructible>()){
+            Attack(col.gameObject.GetComponent<Destructible>());
+        }
+
     }
+
+    private void Attack(Destructible target){
+        if (lastSwing >= swingTimer){
+            target.TakeDamage(damage);
+            lastSwing = 0;
+        }
+    }
+
 }
