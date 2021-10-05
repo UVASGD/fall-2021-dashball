@@ -68,6 +68,10 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.SetActive(false);
             Debug.Log("Speedi Boi");
         }
+        if (collision.gameObject.name == "Portal1" ) {
+            Vector2 tp = GameObject.Find("Portal2").transform.position;
+            this.transform.position = tp;
+        }
     }
 
     IEnumerator PowerUp(float duration) {

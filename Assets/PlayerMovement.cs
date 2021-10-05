@@ -7,10 +7,14 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 pos;
     public Vector2 aim;
     private bool fire;
+    private bool w;
+    private bool a;
+    private bool s;
+    private bool d;
     Rigidbody2D rb2d;
     public float acceleration = 1f;
     public float dashCD = 1f;
-    public float lastDash = 0f;
+    private float lastDash = 0f;
     public float dashPower = 10f;
     public GameObject crosshairs;
     public float crosshairDistance = 4;
@@ -18,6 +22,13 @@ public class PlayerMovement : MonoBehaviour
     public Sprite dash;
     public SpriteRenderer spriteRenderer;
     public float maxSpeed = 10f;
+    public float boostmultiplier = 1.5f;
+    public float boostduration = 3f;
+    public float maxSpeedmult = 1.5f;
+    
+    public static bool MagnetCollide = false;
+    public float magnetduration = 8f;
+    private float timer = 0f;
 
     void Start()
     {
@@ -29,66 +40,72 @@ public class PlayerMovement : MonoBehaviour
         pos = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         fire = Input.GetMouseButton(0);
+        w = Input.GetKey("w");
+        a = Input.GetKey("a");
+        s = Input.GetKey("s");
+        d = Input.GetKey("d");
     }
 
     void FixedUpdate()
     {
 
-         if(fire && lastDash >= dashCD){
+        if(MagnetCollide==true){
+            timer += Time.deltaTime;
+            if(timer>=magnetduration)
+                MagnetCollide = false;
+    
+        }
+
+        if(fire && lastDash >= dashCD){
             rb2d.velocity += aim.normalized * dashPower;
             lastDash = 0f;
         }
-        
-              
-            if (Input.GetKey("w")){
-                rb2d.velocity += new Vector2(0,acceleration);
-                if(rb2d.velocity.magnitude > maxSpeed){
-                rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
-            } 
-            }
-            if (Input.GetKey("a")){
-                rb2d.velocity += new Vector2(-acceleration,0);
-                if(rb2d.velocity.magnitude > maxSpeed){
-                rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
-            } 
-            }
-            if (Input.GetKey("s")){
-                rb2d.velocity += new Vector2(0,-acceleration);
-                if(rb2d.velocity.magnitude > maxSpeed){
-                rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
-            } 
-            }
-            if (Input.GetKey("d")){
-                rb2d.velocity += new Vector2(acceleration,0);
-                if(rb2d.velocity.magnitude > maxSpeed){
-                rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
-            } 
-            }
-            
-    
-      
-        lastDash += Time.deltaTime;
+         
+        if (w){
+            rb2d.velocity += new Vector2(0,acceleration);
+        }
 
-        
+        if (a){
+            rb2d.velocity += new Vector2(-acceleration,0);
+        }
+
+        if (s){
+            rb2d.velocity += new Vector2(0,-acceleration);
+        }
+
+        if (d){
+            rb2d.velocity += new Vector2(acceleration,0);
+        }
+
+        if(rb2d.velocity.magnitude > maxSpeed){
+                rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
+        }
+  
+        lastDash += Time.deltaTime;
 
 		Debug.DrawRay(transform.position, aim.normalized * crosshairDistance, Color.red);
 
 		crosshairs.transform.position = (Vector2) transform.position + (aim.normalized * crosshairDistance);
 	
-
     }
 
    private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.name == "Boost" ) {
-            StartCoroutine(PowerUp(5f));            
+            StartCoroutine(PowerUp(boostduration));            
             collision.gameObject.SetActive(false);
-            Debug.Log("Speedi Boi");
+        }
+        if (collision.gameObject.name == "Magnet" ) {
+            MagnetCollide = true;        
+            collision.gameObject.SetActive(false);
         }
     }
 
-    IEnumerator PowerUp(float duration) {
-        acceleration = 2f;
-        yield return new WaitForSeconds(duration);
-        acceleration = 2f;
+    IEnumerator PowerUp(float boostduration) {
+        dashPower = dashPower * boostmultiplier;
+        maxSpeed = maxSpeed * maxSpeedmult;
+        yield return new WaitForSeconds(boostduration);
+        dashPower = dashPower/ boostmultiplier;
+        maxSpeed = maxSpeed * maxSpeedmult;
     }
+
 }
