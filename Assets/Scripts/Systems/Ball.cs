@@ -43,10 +43,7 @@ public class Ball : MonoBehaviour
             gm.ResetGame();
             //temp for demo, will need to move to next scene, see gamemanager
         }
-        else if (col.gameObject.name == "Portal1" ) {
-            Vector2 tp = GameObject.Find("Portal2").transform.position;
-            this.transform.position = tp;
-        }
+
         //First tests to see if collided with button, THEN tests to see if its a sticky button
         else if (col.gameObject.GetComponent<LogicActivator>() && col.gameObject.GetComponent<LogicActivator>().type == 3)
         {
