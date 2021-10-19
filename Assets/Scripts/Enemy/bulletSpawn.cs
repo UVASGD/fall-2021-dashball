@@ -19,6 +19,13 @@ public class bulletSpawn : MonoBehaviour
     //offsetMax of bullet fire (0 by default)
     public float offsetMax =0.0f;
 
+
+   void Start()
+    {
+        //get components from objects
+        target = GameObject.Find("Player").GetComponent<Transform>();
+    }
+
  void Update ()
  {
     //check to see if shoot

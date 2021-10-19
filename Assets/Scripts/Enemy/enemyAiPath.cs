@@ -6,7 +6,7 @@ using Pathfinding;
 public class enemyAiPath : MonoBehaviour
 {
     //what to chase after
-    public Transform target;
+    Transform target;
     //speed
     public float speed = 200f;
     //how many nodes to look ahead
@@ -32,6 +32,7 @@ public class enemyAiPath : MonoBehaviour
         //get components from objects
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        target = GameObject.Find("Player").GetComponent<Transform>();
         //loop to find past
         InvokeRepeating("UpdatePath", 0f,.5f);
  
@@ -62,14 +63,18 @@ public class enemyAiPath : MonoBehaviour
         //check distance from enemy to player to stop crowding
         float toTarget = Vector2.Distance(rb.position, target.position);
 
+
+
+
+
         //resets path if no path or reached end of path and is far enough away from player
-        if ((path==null || reachedEndofPath ==true) & stopChase < toTarget)
+        if ((path==null || reachedEndofPath ==true) & stopChase <= toTarget)
         {
             seeker.StartPath(rb.position,target.position,OnPathComplete);
             reachedEndofPath =false;
         }
         //check if reached end of path or to closer to player
-        if(currentWaypoint >= path.vectorPath.Count || stopChase > toTarget)
+        if(currentWaypoint >= path.vectorPath.Count & stopChase > toTarget)
         {
             //deal melee damage (add indicator)
             Attack(target.GetComponent<Destructible>());
