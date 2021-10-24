@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 aim;
     public bool fire;
 
+    public GameManager gm;
+
     //im sorta copying this from last year's project im 90% sure some of it is not necessary
     Rigidbody2D rb2d;
     public float movePower = 5f;
@@ -36,9 +38,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        fire = Input.GetMouseButton(0) || Input.GetKey("space");
+        if (gm.isActive) {
+            movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            fire = Input.GetMouseButton(0) || Input.GetKey("space");    
+        }
     }
 
     void FixedUpdate() {

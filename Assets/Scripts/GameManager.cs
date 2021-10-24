@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,18 +11,29 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Vector3 playerStart;
 
+    public bool isActive = false;
+    public Button startButton;
+
 
     // Start is called before the first frame update
     void Start()
     {
         ballStart = ball.transform.position;
         playerStart = player.transform.position;
+        startButton.gameObject.GetComponent<Button>();
+        startButton.onClick.AddListener(StartGame);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    // Start the game
+    public void StartGame() {
+        isActive = true;
+        startButton.gameObject.SetActive(false);
     }
 
     public void ResetGame(){
