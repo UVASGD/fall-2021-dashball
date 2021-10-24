@@ -33,7 +33,6 @@ void OnTriggerEnter2D(Collider2D target)
 }
     //deals damage based on bullet damage
     private void Attack(Destructible target){
-        Debug.Log(target.hitPoints);
             target.TakeDamage(damage);
        
 }

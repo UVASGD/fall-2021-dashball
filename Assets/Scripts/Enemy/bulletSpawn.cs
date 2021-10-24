@@ -9,7 +9,6 @@ public class bulletSpawn : MonoBehaviour
 //where bullet is spawned from
  public Transform spawnPoint;
 //what to fire at
- public Transform target;
 
  //attack-y stuff (taken from spencers work on enemyAI)
     public float shootTimer; //ie how long between shots

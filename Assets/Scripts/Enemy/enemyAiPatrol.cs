@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class enemyAiPath : MonoBehaviour
+public class enemyAiPatrol : MonoBehaviour
 {
-    //what to chase after
+      //what to chase after
     Transform target;
+    bool goToOne = true;
+    Vector3 point1;
+    Vector3 point2;
+    public float point1x;
+    public float point1y;
+    public float point2x;
+    public float point2y;
+
     //speed
     public float speed = 200f;
     //how many nodes to look ahead
@@ -32,6 +40,8 @@ public class enemyAiPath : MonoBehaviour
         //get components from objects
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        point1 = new Vector3(point1x, point1y,0);
+        point2 = new Vector3(point2x, point2y,0);
         target = GameObject.Find("Player").GetComponent<Transform>();
         //loop to find past
         InvokeRepeating("UpdatePath", 0f,.5f);
@@ -41,9 +51,11 @@ public class enemyAiPath : MonoBehaviour
     void UpdatePath()
     {
             //only call StartPath if the end of the path ahs allready been reached
-            if(seeker.IsDone())
-              seeker.StartPath(rb.position,target.position,OnPathComplete);
-    }
+            if(seeker.IsDone() & goToOne)
+              seeker.StartPath(rb.position,point1,OnPathComplete);
+            else
+            seeker.StartPath(rb.position,point2,OnPathComplete);
+   }
 
     void OnPathComplete(Path p)
     {
@@ -60,31 +72,35 @@ public class enemyAiPath : MonoBehaviour
         //increments the swing timer
         lastSwing += Time.deltaTime;
 
-        //check distance from enemy to player to stop crowding
+
+        //check if should attack
         float toTarget = Vector2.Distance(rb.position, target.position);
+        //if (stopChase <= toTarget)
+        //Attack(target.GetComponent<Destructible>());
 
 
-
-
-
-        //resets path if no path or reached end of path and is far enough away from player
-        if ((path==null || reachedEndofPath ==true) & stopChase <= toTarget)
-        {
-            seeker.StartPath(rb.position,target.position,OnPathComplete);
-            reachedEndofPath =false;
-            return;
-        }
-        //check if reached end of path or to closer to player
      
-       
-        if(currentWaypoint >= path.vectorPath.Count & stopChase > toTarget)
+
+
+        //check if reached end of path or to closer to player
+        if(currentWaypoint >= path.vectorPath.Count)
         {
-            //deal melee damage (add indicator)
-            Attack(target.GetComponent<Destructible>());
-            
             reachedEndofPath =true;
+            goToOne = !goToOne;
             return;
         }
+
+
+   if (path==null || reachedEndofPath ==true)
+        {
+            if(goToOne)
+            seeker.StartPath(rb.position,point1,OnPathComplete);
+            else
+            seeker.StartPath(rb.position,point2,OnPathComplete);
+            reachedEndofPath =false;
+             return;
+        }
+
         //havent reached end of path
         else
         {
