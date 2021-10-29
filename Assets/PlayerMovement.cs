@@ -99,13 +99,8 @@ public class PlayerMovement : MonoBehaviour
             MagnetCollide = true;        
             collision.gameObject.SetActive(false);
         }
-<<<<<<< Updated upstream
         if (collision.gameObject.name == "Recall" ) {
             RecallActive = true;
-=======
-        if (collision.gameObject.name == "Relocator" ) {
-                   
->>>>>>> Stashed changes
             collision.gameObject.SetActive(false);
         }
     }
