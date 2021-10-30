@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeedmult = 1.5f;
     
     public static bool MagnetCollide = false;
+    public static bool RecallActive = false;
     public float magnetduration = 8f;
     private float timer = 0f;
 
@@ -96,6 +97,10 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.gameObject.name == "Magnet" ) {
             MagnetCollide = true;        
+            collision.gameObject.SetActive(false);
+        }
+        if (collision.gameObject.name == "Recall" ) {
+            RecallActive = true;
             collision.gameObject.SetActive(false);
         }
     }

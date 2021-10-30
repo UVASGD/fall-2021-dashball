@@ -39,6 +39,11 @@ public float magnetspeed = 5f;
         if(PlayerMovement.MagnetCollide==true){
             ballrb.AddForce(-dir*magnetspeed);
         }
+        if(PlayerMovement.RecallActive==true){
+            ballrb.velocity = new Vector2(0, 0);
+            transform.position =  new Vector2(player.transform.position.x, player.transform.position.y -1.5f);
+            PlayerMovement.RecallActive = false;
+        }
         
         
         //If its on a sticky button
