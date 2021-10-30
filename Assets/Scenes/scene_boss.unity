@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 31964419}
   - component: {fileID: 31964418}
   - component: {fileID: 31964420}
+  - component: {fileID: 31964421}
   m_Layer: 0
   m_Name: Square11
   m_TagString: bossSquare
@@ -252,6 +253,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &31964421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31964416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 2
+  destroyable: 0
 --- !u!1 &93358006
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +280,7 @@ GameObject:
   - component: {fileID: 93358009}
   - component: {fileID: 93358008}
   - component: {fileID: 93358010}
+  - component: {fileID: 93358011}
   m_Layer: 0
   m_Name: Square2
   m_TagString: bossSquare
@@ -383,6 +400,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &93358011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93358006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 1
+  destroyable: 0
 --- !u!1 &174593633
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +427,7 @@ GameObject:
   - component: {fileID: 174593636}
   - component: {fileID: 174593635}
   - component: {fileID: 174593637}
+  - component: {fileID: 174593638}
   m_Layer: 0
   m_Name: Square32
   m_TagString: bossSquare
@@ -514,6 +547,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &174593638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174593633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 4
+  destroyable: 0
 --- !u!1 &197830851
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +574,7 @@ GameObject:
   - component: {fileID: 197830853}
   - component: {fileID: 197830852}
   - component: {fileID: 197830855}
+  - component: {fileID: 197830856}
   m_Layer: 0
   m_Name: Collider1
   m_TagString: Untagged
@@ -653,12 +702,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197830851}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 8.08, z: 0}
   m_LocalScale: {x: 4.3546324, y: 0.56869006, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1627544809}
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &197830855
 BoxCollider2D:
@@ -670,7 +719,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.00000023841858}
@@ -686,6 +735,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.0000005, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &197830856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197830851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7600a5f6b13c09c4792c03b59c740a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TheBoss: {fileID: 1627544808}
 --- !u!1 &201558638
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +760,7 @@ GameObject:
   - component: {fileID: 201558640}
   - component: {fileID: 201558639}
   - component: {fileID: 201558642}
+  - component: {fileID: 201558643}
   m_Layer: 0
   m_Name: Collider4
   m_TagString: Untagged
@@ -825,12 +888,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201558638}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.5, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.5, y: -0.42, z: 0}
   m_LocalScale: {x: 1, y: 4.3386583, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 1627544809}
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &201558642
 BoxCollider2D:
@@ -842,7 +905,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.00000023841858}
@@ -858,6 +921,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.0000005, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &201558643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201558638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7600a5f6b13c09c4792c03b59c740a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TheBoss: {fileID: 1627544808}
 --- !u!1 &259154957
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,7 +1049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259154957}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.96, y: 1.93, z: 0}
+  m_LocalPosition: {x: 2.5, y: 3.7, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1008,6 +1084,7 @@ GameObject:
   - component: {fileID: 259381000}
   - component: {fileID: 259380999}
   - component: {fileID: 259381001}
+  - component: {fileID: 259381002}
   m_Layer: 0
   m_Name: Square22
   m_TagString: bossSquare
@@ -1127,6 +1204,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &259381002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259380997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 3
+  destroyable: 0
 --- !u!1 &362621912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1231,7 @@ GameObject:
   - component: {fileID: 362621915}
   - component: {fileID: 362621914}
   - component: {fileID: 362621916}
+  - component: {fileID: 362621917}
   m_Layer: 0
   m_Name: Square27
   m_TagString: bossSquare
@@ -1258,6 +1351,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &362621917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362621912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 4
+  destroyable: 0
 --- !u!1 &390261130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,6 +1715,7 @@ GameObject:
   - component: {fileID: 495184141}
   - component: {fileID: 495184140}
   - component: {fileID: 495184142}
+  - component: {fileID: 495184143}
   m_Layer: 0
   m_Name: Square28
   m_TagString: bossSquare
@@ -1726,6 +1835,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &495184143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495184138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 4
+  destroyable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +2093,7 @@ GameObject:
   - component: {fileID: 689266888}
   - component: {fileID: 689266887}
   - component: {fileID: 689266889}
+  - component: {fileID: 689266890}
   m_Layer: 0
   m_Name: Square31
   m_TagString: bossSquare
@@ -2088,6 +2213,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &689266890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689266885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 4
+  destroyable: 0
 --- !u!1 &867802698
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,6 +2240,7 @@ GameObject:
   - component: {fileID: 867802701}
   - component: {fileID: 867802700}
   - component: {fileID: 867802702}
+  - component: {fileID: 867802703}
   m_Layer: 0
   m_Name: Square20
   m_TagString: bossSquare
@@ -2219,6 +2360,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &867802703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867802698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 3
+  destroyable: 0
 --- !u!1 &878221440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2231,6 +2387,7 @@ GameObject:
   - component: {fileID: 878221443}
   - component: {fileID: 878221442}
   - component: {fileID: 878221444}
+  - component: {fileID: 878221445}
   m_Layer: 0
   m_Name: Square19
   m_TagString: bossSquare
@@ -2350,6 +2507,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &878221445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878221440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 3
+  destroyable: 0
 --- !u!1 &892342461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,6 +2534,7 @@ GameObject:
   - component: {fileID: 892342464}
   - component: {fileID: 892342463}
   - component: {fileID: 892342465}
+  - component: {fileID: 892342466}
   m_Layer: 0
   m_Name: Square14
   m_TagString: bossSquare
@@ -2481,6 +2654,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &892342466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892342461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 2
+  destroyable: 0
 --- !u!1 &921152408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2493,6 +2681,7 @@ GameObject:
   - component: {fileID: 921152411}
   - component: {fileID: 921152410}
   - component: {fileID: 921152412}
+  - component: {fileID: 921152413}
   m_Layer: 0
   m_Name: Square10
   m_TagString: bossSquare
@@ -2612,6 +2801,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &921152413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921152408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 2
+  destroyable: 0
 --- !u!1 &985659625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,6 +2828,7 @@ GameObject:
   - component: {fileID: 985659627}
   - component: {fileID: 985659626}
   - component: {fileID: 985659629}
+  - component: {fileID: 985659630}
   m_Layer: 0
   m_Name: Collider2
   m_TagString: Untagged
@@ -2752,11 +2957,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985659625}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.5, y: 0, z: 0}
+  m_LocalPosition: {x: 9.5, y: -0.42, z: 0}
   m_LocalScale: {x: 1, y: 4.3386583, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 1627544809}
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &985659629
 BoxCollider2D:
@@ -2768,7 +2973,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.00000023841858}
@@ -2784,6 +2989,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.0000005, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &985659630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985659625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7600a5f6b13c09c4792c03b59c740a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TheBoss: {fileID: 1627544808}
 --- !u!1 &1019136230
 GameObject:
   m_ObjectHideFlags: 0
@@ -2796,6 +3014,7 @@ GameObject:
   - component: {fileID: 1019136233}
   - component: {fileID: 1019136232}
   - component: {fileID: 1019136234}
+  - component: {fileID: 1019136235}
   m_Layer: 0
   m_Name: Square13
   m_TagString: bossSquare
@@ -2915,6 +3134,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1019136235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019136230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 2
+  destroyable: 0
 --- !u!1 &1028751950 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5497589984008248219, guid: c9742289ec4c6d844b2b8caa68fe42d9,
@@ -2940,6 +3174,140 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1028751957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028751950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53854bcfc1a70c442b1ae1df43993740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  hitPoints: 50
+  gm: {fileID: 1268510709}
+--- !u!1 &1042057962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1042057966}
+  - component: {fileID: 1042057965}
+  - component: {fileID: 1042057964}
+  - component: {fileID: 1042057963}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1042057963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042057962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1042057964}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1042057964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042057962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1042057965
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042057962}
+  m_CullTransparentMesh: 0
+--- !u!224 &1042057966
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042057962}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1198169681}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1116195706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,6 +3320,7 @@ GameObject:
   - component: {fileID: 1116195709}
   - component: {fileID: 1116195708}
   - component: {fileID: 1116195710}
+  - component: {fileID: 1116195711}
   m_Layer: 0
   m_Name: Square4
   m_TagString: bossSquare
@@ -3071,6 +3440,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1116195711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116195706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 1
+  destroyable: 0
 --- !u!1 &1129510593
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,6 +3467,7 @@ GameObject:
   - component: {fileID: 1129510596}
   - component: {fileID: 1129510595}
   - component: {fileID: 1129510597}
+  - component: {fileID: 1129510598}
   m_Layer: 0
   m_Name: Square24
   m_TagString: bossSquare
@@ -3202,6 +3587,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1129510598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129510593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 3
+  destroyable: 0
 --- !u!1 &1169305792
 GameObject:
   m_ObjectHideFlags: 0
@@ -3214,6 +3614,7 @@ GameObject:
   - component: {fileID: 1169305795}
   - component: {fileID: 1169305794}
   - component: {fileID: 1169305796}
+  - component: {fileID: 1169305797}
   m_Layer: 0
   m_Name: Square16
   m_TagString: bossSquare
@@ -3333,6 +3734,154 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1169305797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169305792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 2
+  destroyable: 0
+--- !u!1 &1198169680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198169681}
+  - component: {fileID: 1198169683}
+  - component: {fileID: 1198169682}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1198169681
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198169680}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1042057966}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1198169682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198169680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Start
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1198169683
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198169680}
+  m_CullTransparentMesh: 0
 --- !u!1001 &1198364979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3354,12 +3903,12 @@ PrefabInstance:
     - target: {fileID: 5497589984008248217, guid: c9742289ec4c6d844b2b8caa68fe42d9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 5497589984008248217, guid: c9742289ec4c6d844b2b8caa68fe42d9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.85
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5497589984008248217, guid: c9742289ec4c6d844b2b8caa68fe42d9,
         type: 3}
@@ -3425,6 +3974,7 @@ GameObject:
   - component: {fileID: 1227671043}
   - component: {fileID: 1227671042}
   - component: {fileID: 1227671045}
+  - component: {fileID: 1227671046}
   m_Layer: 0
   m_Name: Collider3
   m_TagString: Untagged
@@ -3552,12 +4102,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227671041}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -8.92, z: 0}
   m_LocalScale: {x: 4.3546324, y: 0.56869006, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1627544809}
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1227671045
 BoxCollider2D:
@@ -3569,7 +4119,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3585,6 +4135,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &1227671046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227671041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7600a5f6b13c09c4792c03b59c740a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TheBoss: {fileID: 1627544808}
 --- !u!1 &1268510707
 GameObject:
   m_ObjectHideFlags: 0
@@ -3634,7 +4197,7 @@ MonoBehaviour:
   player: {fileID: 1028751950}
   playerStart: {x: 0, y: 0, z: 0}
   isActive: 0
-  startButton: {fileID: 0}
+  startButton: {fileID: 1042057963}
 --- !u!1 &1367720106
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,6 +4210,7 @@ GameObject:
   - component: {fileID: 1367720109}
   - component: {fileID: 1367720108}
   - component: {fileID: 1367720110}
+  - component: {fileID: 1367720111}
   m_Layer: 0
   m_Name: Square23
   m_TagString: bossSquare
@@ -3766,6 +4330,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1367720111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367720106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 3
+  destroyable: 0
 --- !u!1 &1394966840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3778,6 +4357,7 @@ GameObject:
   - component: {fileID: 1394966843}
   - component: {fileID: 1394966842}
   - component: {fileID: 1394966844}
+  - component: {fileID: 1394966845}
   m_Layer: 0
   m_Name: Square6
   m_TagString: bossSquare
@@ -3897,6 +4477,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1394966845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394966840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 1
+  destroyable: 0
 --- !u!1 &1496830506
 GameObject:
   m_ObjectHideFlags: 0
@@ -3909,6 +4504,7 @@ GameObject:
   - component: {fileID: 1496830509}
   - component: {fileID: 1496830508}
   - component: {fileID: 1496830510}
+  - component: {fileID: 1496830511}
   m_Layer: 0
   m_Name: Square30
   m_TagString: bossSquare
@@ -4028,6 +4624,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1496830511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496830506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 4
+  destroyable: 0
 --- !u!1 &1500404587
 GameObject:
   m_ObjectHideFlags: 0
@@ -4040,6 +4651,7 @@ GameObject:
   - component: {fileID: 1500404590}
   - component: {fileID: 1500404589}
   - component: {fileID: 1500404591}
+  - component: {fileID: 1500404592}
   m_Layer: 0
   m_Name: Square29
   m_TagString: bossSquare
@@ -4159,6 +4771,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1500404592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500404587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 4
+  destroyable: 0
 --- !u!1 &1583760717
 GameObject:
   m_ObjectHideFlags: 0
@@ -4171,6 +4798,7 @@ GameObject:
   - component: {fileID: 1583760720}
   - component: {fileID: 1583760719}
   - component: {fileID: 1583760721}
+  - component: {fileID: 1583760722}
   m_Layer: 0
   m_Name: Square5
   m_TagString: bossSquare
@@ -4290,6 +4918,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1583760722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583760717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 1
+  destroyable: 0
 --- !u!1 &1611305369
 GameObject:
   m_ObjectHideFlags: 0
@@ -4481,6 +5124,10 @@ Transform:
   - {fileID: 1496830507}
   - {fileID: 689266886}
   - {fileID: 174593634}
+  - {fileID: 197830854}
+  - {fileID: 985659628}
+  - {fileID: 1227671044}
+  - {fileID: 201558641}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4496,6 +5143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8cd872db8de43d4e98c12b5c8699b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 4
   bossList: []
 --- !u!1 &1690693126
 GameObject:
@@ -4509,6 +5157,7 @@ GameObject:
   - component: {fileID: 1690693129}
   - component: {fileID: 1690693128}
   - component: {fileID: 1690693130}
+  - component: {fileID: 1690693131}
   m_Layer: 0
   m_Name: Square8
   m_TagString: bossSquare
@@ -4628,6 +5277,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1690693131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690693126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 1
+  destroyable: 0
 --- !u!1 &1706823304
 GameObject:
   m_ObjectHideFlags: 0
@@ -4640,6 +5304,7 @@ GameObject:
   - component: {fileID: 1706823307}
   - component: {fileID: 1706823306}
   - component: {fileID: 1706823308}
+  - component: {fileID: 1706823309}
   m_Layer: 0
   m_Name: Square15
   m_TagString: bossSquare
@@ -4759,6 +5424,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1706823309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706823304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 2
+  destroyable: 0
 --- !u!1 &1729947564
 GameObject:
   m_ObjectHideFlags: 0
@@ -4902,6 +5582,7 @@ GameObject:
   - component: {fileID: 1733788439}
   - component: {fileID: 1733788438}
   - component: {fileID: 1733788440}
+  - component: {fileID: 1733788441}
   m_Layer: 0
   m_Name: Square21
   m_TagString: bossSquare
@@ -5021,6 +5702,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1733788441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733788436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 3
+  destroyable: 0
 --- !u!1 &1758210762
 GameObject:
   m_ObjectHideFlags: 0
@@ -5033,6 +5729,7 @@ GameObject:
   - component: {fileID: 1758210765}
   - component: {fileID: 1758210764}
   - component: {fileID: 1758210766}
+  - component: {fileID: 1758210767}
   m_Layer: 0
   m_Name: Square12
   m_TagString: bossSquare
@@ -5152,6 +5849,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1758210767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758210762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 2
+  destroyable: 0
 --- !u!1 &1929004030
 GameObject:
   m_ObjectHideFlags: 0
@@ -5164,6 +5876,7 @@ GameObject:
   - component: {fileID: 1929004033}
   - component: {fileID: 1929004032}
   - component: {fileID: 1929004034}
+  - component: {fileID: 1929004035}
   m_Layer: 0
   m_Name: Square7
   m_TagString: bossSquare
@@ -5283,6 +5996,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1929004035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929004030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 1
+  destroyable: 0
 --- !u!1 &1953584755
 GameObject:
   m_ObjectHideFlags: 0
@@ -5295,6 +6023,7 @@ GameObject:
   - component: {fileID: 1953584758}
   - component: {fileID: 1953584757}
   - component: {fileID: 1953584759}
+  - component: {fileID: 1953584760}
   m_Layer: 0
   m_Name: Square18
   m_TagString: bossSquare
@@ -5414,6 +6143,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1953584760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953584755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 3
+  destroyable: 0
 --- !u!1 &2046373902
 GameObject:
   m_ObjectHideFlags: 0
@@ -5426,6 +6170,7 @@ GameObject:
   - component: {fileID: 2046373905}
   - component: {fileID: 2046373904}
   - component: {fileID: 2046373906}
+  - component: {fileID: 2046373907}
   m_Layer: 0
   m_Name: Square3
   m_TagString: bossSquare
@@ -5545,6 +6290,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &2046373907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046373902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 1
+  destroyable: 0
 --- !u!1 &2079134468
 GameObject:
   m_ObjectHideFlags: 0
@@ -5557,6 +6317,7 @@ GameObject:
   - component: {fileID: 2079134471}
   - component: {fileID: 2079134470}
   - component: {fileID: 2079134472}
+  - component: {fileID: 2079134473}
   m_Layer: 0
   m_Name: Square26
   m_TagString: bossSquare
@@ -5676,3 +6437,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &2079134473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079134468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  direction: 4
+  destroyable: 0

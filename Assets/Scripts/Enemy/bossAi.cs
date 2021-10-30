@@ -42,6 +42,8 @@ public class bossAi : MonoBehaviour
     //0 = nothing, 1 = starting animation, 2 = shoot squares, 3 = shoot squares and move, 4 respawning squares
     //shot squares can be destroyed adn if they are leaves slot open 
     int phase = 0;
+    int attackSquare=2;
+    [HideInInspector] public int hp =4;
     //holds all squares used for boss room
     [HideInInspector] public List<GameObject> bossList = new List<GameObject>();
 
@@ -53,33 +55,26 @@ public class bossAi : MonoBehaviour
          {
              bossList.Add (bossSqaure);
          }
-         Debug.Log("count" + bossList.Count);
-         Phase1();
+        Phase1();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if(phase == 1 && bossList[attackSquare].GetComponent<boxBullet>().goNextShot())
+        {
+        Phase1();
+        }
     }
 
     void Phase1()
     {
         //get random sqaure
-
-         int attackSquare = (Random.Range(0, bossList.Count-1));
-         Debug.Log(attackSquare);
+        attackSquare =     2;
+                                //(Random.Range(0, bossList.Count-1));
+        Debug.Log(attackSquare);
+        
         //unlock position
-        bossList[attackSquare].GetComponent<Rigidbody2D>().constraints = ~RigidbodyConstraints2D.FreezePositionX | ~RigidbodyConstraints2D.FreezePositionY;
-        //decide velocity to go into center
-        if(attackSquare <= 7)
-            bossList[attackSquare].GetComponent<Rigidbody2D>().velocity = new Vector3(0, -10, 0);
-        else if(attackSquare <= 14)
-            bossList[attackSquare].GetComponent<Rigidbody2D>().velocity = new Vector3(-10, 0, 0); 
-        else if(attackSquare <= 21)
-            bossList[attackSquare].GetComponent<Rigidbody2D>().velocity = new Vector3(0, 10, 0);
-        else
-            bossList[attackSquare].GetComponent<Rigidbody2D>().velocity = new Vector3(10, 0, 0);
-
+        bossList[attackSquare].GetComponent<boxBullet>().Shoot();
     }
 }
