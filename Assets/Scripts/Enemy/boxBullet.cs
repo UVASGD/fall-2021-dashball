@@ -11,6 +11,7 @@ public class boxBullet : MonoBehaviour
     //1 - down, 2 = left, 3 = up, 4 = right
     public int direction;
     public bool destroyable = false;
+    bool destroyed = false;
     Vector3 loc;
 
     float xcord;
@@ -22,10 +23,13 @@ public class boxBullet : MonoBehaviour
 
     bool goNext = false;
 
+    float respawnTimer;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+
         loc = rb.position;
         xcord = rb.transform.position.x;
         ycord = rb.transform.position.y;
@@ -33,7 +37,7 @@ public class boxBullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!CheckStop())
+        if (!CheckStop() && !destroyed)
         {
             distance += Vector3.Distance(loc, rb.position);
             loc = rb.position;
@@ -45,8 +49,8 @@ public class boxBullet : MonoBehaviour
                     rb.AddForce(new Vector2(0, 10) * movePower);
                 else
                     rb.AddForce(new Vector2(0, -10) * movePower);
-            else if (comeBack)
-                if (distance >= 1.0f)
+            else if (direction == 2)
+                if (comeBack)
                     rb.AddForce(new Vector2(10, 0) * movePower);
                 else
                     rb.AddForce(new Vector2(-10, 0) * movePower);
@@ -59,13 +63,32 @@ public class boxBullet : MonoBehaviour
                 if (comeBack)
                 rb.AddForce(new Vector2(-10, 0) * movePower);
             else
-                rb.AddForce(new Vector2(-10, 0) * movePower);
+                rb.AddForce(new Vector2(10, 0) * movePower);
+        }
+        else if (destroyed)
+        {
+            respawnTimer += Time.deltaTime;
+            if (respawnTimer > 2)
+                Respawn();
         }
     }
 
+    void Respawn()
+    {
+        destroyable = false;
+        destroyed = false;
+        comeBack = false;
+        rb.velocity = new Vector2(0, 0);
+        gameObject.transform.position = (new Vector2(xcord, ycord));
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        goNext = true;
+        respawnTimer = 0;
+        distance = 0;
+    }
 
     bool CheckStop()
     {
+        if(!destroyed)
         if (direction == 1 && rb.transform.position.y >= ycord && comeBack == true && goNext == false)
         {
             destroyable = false;
@@ -85,7 +108,7 @@ public class boxBullet : MonoBehaviour
             gameObject.transform.position = (new Vector2(xcord, ycord));
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             goNext = true;
-            distance = 0;            
+            distance = 0;
             return true;
         }
         else if (direction == 3 && rb.transform.position.y <= ycord && comeBack == true && goNext == false)
@@ -96,7 +119,7 @@ public class boxBullet : MonoBehaviour
             gameObject.transform.position = (new Vector2(xcord, ycord));
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             goNext = true;
-            distance = 0;            
+            distance = 0;
             return true;
         }
         else if (direction == 4 && rb.transform.position.x <= xcord && comeBack == true && goNext == false)
@@ -107,7 +130,7 @@ public class boxBullet : MonoBehaviour
             gameObject.transform.position = (new Vector2(xcord, ycord));
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             goNext = true;
-            distance = 0;            
+            distance = 0;
             return true;
         }
         return false;
@@ -115,7 +138,7 @@ public class boxBullet : MonoBehaviour
 
     public bool goNextShot()
     {
-        if(goNext)
+        if (goNext)
         {
             goNext = false;
             return true;
@@ -126,8 +149,7 @@ public class boxBullet : MonoBehaviour
     public void Shoot()
     {
         goNext = false;
-        //unlock position
-        rb.constraints = RigidbodyConstraints2D.None;
+
         //decide velocity to go into center and freeze nessecarry positions
         if (direction == 1)
         {
@@ -156,20 +178,25 @@ public class boxBullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D target)
     {
-        //for somereason really hates camerabounds of unmoving camera
-        if (target.gameObject.name != "CameraBounds")
+        //checks to see if hit player
+        if (target.gameObject.name.Equals("Player"))
         {
-            //checks to see if hit player
-            if (target.gameObject.name.Equals("Player"))
+            Attack(target.gameObject.GetComponent<Destructible>());
+            Debug.Log(target.gameObject.name);
+            //removes object
+            if (destroyable)
             {
-                Attack(target.gameObject.GetComponent<Destructible>());
-                //removes object
-                if (destroyable)
-                    Destroy(gameObject);
+                gameObject.transform.position = new Vector2(100, 100);
+                destroyed = true;
             }
-            else if (target.gameObject.name.Equals("Ball"))
-                if (destroyable)
-                    Destroy(gameObject);
+        }
+        else if (target.gameObject.name.Equals("Ball"))
+        {
+            if (destroyable)
+            {
+                gameObject.transform.position = new Vector2(100, 100);
+                destroyed = true;
+            }
         }
     }
     //deals damage based on bullet damage
