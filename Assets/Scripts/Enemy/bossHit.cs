@@ -17,7 +17,7 @@ public class bossHit : MonoBehaviour
          {
             if(bossSqaure.GetComponent<boxBullet>().destroyable == true)
             {
-                Destroy(bossSqaure);
+                bossSqaure.GetComponent<boxBullet>().Respawn();
                 //here complete destroy = bad
             }
          }

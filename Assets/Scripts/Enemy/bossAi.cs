@@ -4,41 +4,6 @@ using UnityEngine;
 
 public class bossAi : MonoBehaviour
 {
-    /*
-    public GameObject square1;
-    public GameObject square2;
-    public GameObject square3;
-    public GameObject square4;
-    public GameObject square5;
-    public GameObject square6;
-    public GameObject square7;
-    public GameObject square8;
-    public GameObject square9;
-    public GameObject square10;
-    public GameObject square11;
-    public GameObject square12;
-    public GameObject square13;
-    public GameObject square14;
-    public GameObject square15;
-    public GameObject square16;
-    public GameObject square17;
-    public GameObject square18;
-    public GameObject square19;
-    public GameObject square20;
-    public GameObject square21;
-    public GameObject square22;
-    public GameObject square23;
-    public GameObject square24;
-    public GameObject square25;
-    public GameObject square26;
-    public GameObject square27;
-    public GameObject square28;
-    public GameObject square29;
-    public GameObject square30;
-    public GameObject square31;
-    public GameObject square32;
-    */
-
     //0 = nothing, 1 = starting animation, 2 = shoot squares, 3 = shoot squares and move, 4 respawning squares
     //shot squares can be destroyed adn if they are leaves slot open 
     int phase = 0;
@@ -48,15 +13,20 @@ public class bossAi : MonoBehaviour
     [HideInInspector] public List<GameObject> bossList = new List<GameObject>();
     bool firstGo = false;
     float holder;
+    public List<int> boxNumbers = new List<int>();
+    public List<int> numbersHolder = new List<int>();
 
     void Start()
     {
-        phase = 1;
+        phase = //1;
+                2;
         //finds all squares in game space and adds them to list
         foreach (GameObject bossSqaure in GameObject.FindGameObjectsWithTag("bossSquare"))
         {
             bossList.Add(bossSqaure);
         }
+        for (int i = 0; i < 28; i++)
+            boxNumbers.Add(i);
     }
 
     // Update is called once per frame
@@ -75,17 +45,54 @@ public class bossAi : MonoBehaviour
         {
             Phase1();
         }
+        else if (phase == 2 && bossList[attackSquare].GetComponent<boxBullet>().goNextShot())
+        {
+            if (checkShots())
+                Phase2();
+        }
 
+    }
+
+    bool checkShots()
+    {
+        Debug.Log("here");
+        //this for loop is probably wrong and won't let the second phase 2 go
+        //HERERERERERE
+        foreach (int count in numbersHolder)
+        {
+            if (bossList[count].GetComponent<boxBullet>().goNextShot())
+            {
+                boxNumbers.Add(numbersHolder[count]);
+                numbersHolder.Remove(count);
+            }
+            else
+                return false;
+        }
+        return true;
+    }
+
+    void Phase2()
+    {
+        int holder;
+        int shooter;
+        for (int i = 0; i < 4 - hp + 1; i++)
+        {
+            holder = (Random.Range(0, boxNumbers.Count - 1));
+            shooter = boxNumbers[holder];
+            numbersHolder.Add(shooter);
+            boxNumbers.Remove(holder);
+            bossList[shooter].GetComponent<boxBullet>().Shoot();
+        }
     }
 
     void Phase1()
     {
         //get random sqaure
         attackSquare = //3;
-                        (Random.Range(0, bossList.Count-1));
+                        (Random.Range(0, bossList.Count - 1));
         Debug.Log(attackSquare);
 
-     //   bossList[attackSquare].GetComponent<SpriteRenderer>().color = Color.blue;
+        //   bossList[attackSquare].GetComponent<SpriteRenderer>().color = Color.blue;
 
         bossList[attackSquare].GetComponent<boxBullet>().Shoot();
     }

@@ -73,7 +73,7 @@ public class boxBullet : MonoBehaviour
         }
     }
 
-    void Respawn()
+    public void Respawn()
     {
         destroyable = false;
         destroyed = false;
