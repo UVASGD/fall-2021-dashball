@@ -10,17 +10,18 @@ public class bossHit : MonoBehaviour
     {
         if (col.gameObject.name == "Ball")
         {
-            TheBoss.GetComponent<bossAi>().hp -=1;
-            col.gameObject.GetComponent<Rigidbody2D>().velocity = col.gameObject.GetComponent<Rigidbody2D>().velocity *-1;
-
-             foreach (GameObject bossSqaure in TheBoss.GetComponent<bossAi>().bossList)
-         {
-            if(bossSqaure.GetComponent<boxBullet>().destroyable == true)
+            TheBoss.GetComponent<bossAi>().hp -= 1;
+            TheBoss.GetComponent<bossAi>().goPhase2();
+            col.gameObject.GetComponent<Rigidbody2D>().velocity = //col.gameObject.GetComponent<Rigidbody2D>().velocity 
+                                                                    new Vector2(0, 0);
+            col.gameObject.GetComponent<Rigidbody2D>().transform.position = new Vector2(0, 0);
+            foreach (GameObject bossSqaure in TheBoss.GetComponent<bossAi>().bossList)
             {
-                bossSqaure.GetComponent<boxBullet>().Respawn();
-                //here complete destroy = bad
+                if (bossSqaure.GetComponent<boxBullet>().destroyable == true)
+                {
+                    bossSqaure.GetComponent<boxBullet>().Respawn();
+                }
             }
-         }
         }
     }
 

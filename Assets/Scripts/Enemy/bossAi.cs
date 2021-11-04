@@ -16,10 +16,12 @@ public class bossAi : MonoBehaviour
     public List<int> boxNumbers = new List<int>();
     public List<int> numbersHolder = new List<int>();
 
+    public List<int> toRemove = new List<int>();
+
     void Start()
     {
-        phase = //1;
-                2;
+        phase = 1;
+                //2;
         //finds all squares in game space and adds them to list
         foreach (GameObject bossSqaure in GameObject.FindGameObjectsWithTag("bossSquare"))
         {
@@ -45,25 +47,33 @@ public class bossAi : MonoBehaviour
         {
             Phase1();
         }
-        else if (phase == 2 && bossList[attackSquare].GetComponent<boxBullet>().goNextShot())
+        else if (phase == 2 && firstGo == true)
         {
             if (checkShots())
-                Phase2();
+                if (numbersHolder.Count == 0)
+                    Phase2();
         }
 
     }
 
+    public void goPhase2()
+    {
+        phase=2;
+    }
+
     bool checkShots()
     {
-        Debug.Log("here");
-        //this for loop is probably wrong and won't let the second phase 2 go
-        //HERERERERERE
+        foreach (int count in toRemove)
+        {
+            numbersHolder.Remove(count);
+        }
+        toRemove = new List<int>();
         foreach (int count in numbersHolder)
         {
             if (bossList[count].GetComponent<boxBullet>().goNextShot())
             {
-                boxNumbers.Add(numbersHolder[count]);
-                numbersHolder.Remove(count);
+                boxNumbers.Add(count);
+                toRemove.Add(count);
             }
             else
                 return false;
