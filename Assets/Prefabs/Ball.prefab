@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5544524500557056193}
   - component: {fileID: 5544524500557056192}
   - component: {fileID: 5544524500557056220}
+  - component: {fileID: -4632598242475019726}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -134,9 +135,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+  pc: {fileID: 0}
   ballrb: {fileID: 0}
   magnetSpeed: 5
   damage: 25
   swingTimer: 1
   lastSwing: 0
   tiedStickyButton: {fileID: 0}
+--- !u!114 &-4632598242475019726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544524500557056195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2e4f792374dda4fbc93d43a873794b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
