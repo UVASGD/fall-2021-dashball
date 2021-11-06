@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,8 +14,13 @@ public class GameManager : MonoBehaviour
     public Vector3 playerStart;
 
     public bool isActive = false;
-    public Button startButton;
 
+    // UI Elements
+    public Button startButton;
+    public TextMeshProUGUI levelCoverText;
+    public Button exitButton;
+    public Button controlButton;
+    public Button aboutButton;
 
     // Start is called before the first frame update
     void Start()
@@ -22,18 +29,32 @@ public class GameManager : MonoBehaviour
         playerStart = player.transform.position;
         startButton.gameObject.GetComponent<Button>();
         startButton.onClick.AddListener(StartGame);
+        try {
+            exitButton.gameObject.GetComponent<Button>();
+            exitButton.onClick.AddListener(ExitGame);
+            controlButton.gameObject.GetComponent<Button>();
+            aboutButton.gameObject.GetComponent<Button>();
+        }
+        catch {
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Start the game
     public void StartGame() {
         isActive = true;
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "StartMenu") {
+		    SceneManager.LoadScene("Level1");
+        }
         startButton.gameObject.SetActive(false);
+        levelCoverText.gameObject.SetActive(false);
     }
 
     public void ResetGame(){
@@ -42,5 +63,9 @@ public class GameManager : MonoBehaviour
         ball.transform.position = ballStart;
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
         player.transform.position = playerStart;
+    }
+
+    public void ExitGame() {
+        Application.Quit();
     }
 }
