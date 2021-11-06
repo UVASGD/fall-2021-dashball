@@ -45,13 +45,14 @@ public class Ball : MonoBehaviour
 			SceneManager.LoadScene("Level2");
 		}
 		if (col.gameObject.name == "2 to 3") {
+			SceneManager.LoadScene("Level3");
+		}
+        if (col.gameObject.name == "3 to 4") {
+			SceneManager.LoadScene("Level4");
+		}
+        if (col.gameObject.name == "4 to win") {
 			SceneManager.LoadScene("Victory");
 		}
-		// if (collision.CompareTag("3 to win")) {
-		// 	gm.isActive = false;
-		// 	SceneManager.LoadScene("Victory");
-		// 	Destroy(gameObject);			
-		// }
 
         //First tests to see if collided with button, THEN tests to see if its a sticky button
         else if (col.gameObject.GetComponent<LogicActivator>() && col.gameObject.GetComponent<LogicActivator>().type == 3)
