@@ -7,7 +7,7 @@ public class Destructible : MonoBehaviour
 
     public float maxHealth;
     public float hitPoints;
-
+    public GameManager gm;
 
     //TakeDamage() with no parameters does fatal damage
     public virtual void TakeDamage()
@@ -26,6 +26,7 @@ public class Destructible : MonoBehaviour
 
     public virtual void Die() {
 		Destroy(gameObject);
+        gm.isActive = false;
     }
 
     //Heal() with no parameters heals to full

@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 aim;
     public bool fire;
 
+    public GameManager gm;
+
     //im sorta copying this from last year's project im 90% sure some of it is not necessary
     Rigidbody2D rb2d;
     public float currentMaxSpeed;
@@ -31,6 +33,9 @@ public class PlayerController : MonoBehaviour
     public Sprite dash;
     public Transform pos;
 
+    //power ups/commnads
+    public bool RecallActive = false;
+
     // Bool portal
     public bool ballEntered1 = false;
     public bool ballEntered2 = false;
@@ -39,14 +44,18 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        RecallActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        fire = Input.GetMouseButton(0);
+        if (gm.isActive) {
+            movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            fire = Input.GetMouseButton(0);    
+        }
+
     }
 
     void FixedUpdate() {
@@ -89,6 +98,12 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.SetActive(false);
             Debug.Log("Speedi Boi");
         }
+
+        if (collision.gameObject.name == "Recall" ) {
+            RecallActive = true;
+            collision.gameObject.SetActive(false);
+        }
+        
     }
 
     IEnumerator PowerUp(float duration) {
