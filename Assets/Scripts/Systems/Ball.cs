@@ -6,7 +6,13 @@ using UnityEngine.SceneManagement;
 public class Ball : MonoBehaviour
 {
     public GameManager gm;
+    public PlayerController pc;
 
+    //magnet
+    public Rigidbody2D ballrb;
+    public float magnetSpeed;
+
+    //attack properties
     public float damage = 25;
     public float swingTimer = 1; //ie how long between "attacks" (just so it doesnt do a lot of little attacks, may have to modify this system)
     public float lastSwing = 0; //the actual timer maybe I should use different names lol
@@ -17,6 +23,8 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ballrb = GetComponent<Rigidbody2D>();
+        pc = gm.player.GetComponent<PlayerController>();
         //If game manager not specified, find it
         if (!gm)
             gm = GameObject.FindObjectOfType<GameManager>();
@@ -30,6 +38,18 @@ public class Ball : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        Vector2 dir = (this.transform.position - gm.player.transform.position).normalized;
+
+        if(Input.GetKey("space")){
+            ballrb.AddForce(-dir*magnetSpeed);
+        }
+
+        if(pc.RecallActive==true){
+            ballrb.velocity = new Vector2(0, 0);
+            transform.position =  new Vector2(gm.player.transform.position.x, gm.player.transform.position.y -1.5f);
+            pc.RecallActive = false;
+        }
+
         //If its on a sticky button
         if (tiedStickyButton)
         {
@@ -53,6 +73,11 @@ public class Ball : MonoBehaviour
         if (col.gameObject.name == "4 to win") {
 			SceneManager.LoadScene("Victory");
 		}
+		// if (collision.CompareTag("3 to win")) {
+		// 	gm.isActive = false;
+		// 	SceneManager.LoadScene("Victory");
+		// 	Destroy(gameObject);			
+		// }
 
         //First tests to see if collided with button, THEN tests to see if its a sticky button
         else if (col.gameObject.GetComponent<LogicActivator>() && col.gameObject.GetComponent<LogicActivator>().type == 3)
