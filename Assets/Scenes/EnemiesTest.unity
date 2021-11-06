@@ -7772,13 +7772,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   hitPoints: 0
+  gm: {fileID: 0}
   xSpeed: 0.17
   ySpeed: 0.39
-  speed: 0.01
+  speed: 0.1
   distance: 2.82
   target: {fileID: 908086062}
-  damage: 0
-  swingTimer: 1
+  damage: 20
+  swingTimer: 5
   lastSwing: 0
 --- !u!50 &430026129
 Rigidbody2D:
@@ -7961,6 +7962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   hitPoints: 0
+  gm: {fileID: 1941151002}
 --- !u!1 &1010958652
 GameObject:
   m_ObjectHideFlags: 0
