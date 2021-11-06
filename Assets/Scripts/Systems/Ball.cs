@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Ball : MonoBehaviour
 {
     public GameManager gm;
+    public PlayerController pc;
 
     //magnet
     public Rigidbody2D ballrb;
@@ -23,6 +24,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
         ballrb = GetComponent<Rigidbody2D>();
+        pc = gm.player.GetComponent<PlayerController>();
         //If game manager not specified, find it
         if (!gm)
             gm = GameObject.FindObjectOfType<GameManager>();
@@ -41,6 +43,13 @@ public class Ball : MonoBehaviour
         if(Input.GetKey("space")){
             ballrb.AddForce(-dir*magnetSpeed);
         }
+
+        if(pc.RecallActive==true){
+            ballrb.velocity = new Vector2(0, 0);
+            transform.position =  new Vector2(gm.player.transform.position.x, gm.player.transform.position.y -1.5f);
+            pc.RecallActive = false;
+        }
+
         //If its on a sticky button
         if (tiedStickyButton)
         {
@@ -64,6 +73,11 @@ public class Ball : MonoBehaviour
         if (col.gameObject.name == "4 to win") {
 			SceneManager.LoadScene("Victory");
 		}
+		// if (collision.CompareTag("3 to win")) {
+		// 	gm.isActive = false;
+		// 	SceneManager.LoadScene("Victory");
+		// 	Destroy(gameObject);			
+		// }
 
         //First tests to see if collided with button, THEN tests to see if its a sticky button
         else if (col.gameObject.GetComponent<LogicActivator>() && col.gameObject.GetComponent<LogicActivator>().type == 3)

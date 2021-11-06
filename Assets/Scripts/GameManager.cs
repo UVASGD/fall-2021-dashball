@@ -27,8 +27,16 @@ public class GameManager : MonoBehaviour
     {
         ballStart = ball.transform.position;
         playerStart = player.transform.position;
+        
+        //these try/catches are for debug scenes w/o a startbutton
+        try{
         startButton.gameObject.GetComponent<Button>();
         startButton.onClick.AddListener(StartGame);
+        }
+        catch{
+            StartGame();
+        }
+        //these try/catches or for non-start games wihtout exit/control buttons
         try {
             exitButton.gameObject.GetComponent<Button>();
             exitButton.onClick.AddListener(ExitGame);
@@ -53,8 +61,13 @@ public class GameManager : MonoBehaviour
         if (scene.name == "StartMenu") {
 		    SceneManager.LoadScene("Level1");
         }
-        startButton.gameObject.SetActive(false);
-        levelCoverText.gameObject.SetActive(false);
+        //these are for debug scenes
+        if(startButton){
+            startButton.gameObject.SetActive(false);
+        }
+        if(levelCoverText){
+            levelCoverText.gameObject.SetActive(false);
+        }
     }
 
     public void ResetGame(){
