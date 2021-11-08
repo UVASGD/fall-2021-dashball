@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class boxBullet : MonoBehaviour
 {
-    public int damage = 15;
+    public int damage = 25;
     float distance = 0.0f;
     Rigidbody2D rb;
     //1 - down, 2 = left, 3 = up, 4 = right
@@ -18,7 +18,7 @@ public class boxBullet : MonoBehaviour
     bool comeBack = false;
     bool goNext = false;
     float respawnTimer;
-    double respawnWait = 2.6;
+    double respawnWait = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -179,13 +179,14 @@ public class boxBullet : MonoBehaviour
         if (target.gameObject.name.Equals("Player"))
         {
             Attack(target.gameObject.GetComponent<Destructible>());
-            Debug.Log(target.gameObject.name);
-            //removes object
+        //   target.gameObject.GetComponent<Rigidbody2D>().velocity = target.gameObject.GetComponent<Rigidbody2D>().velocity * -1;
+            //*removes object
             if (destroyable)
             {
                 gameObject.transform.position = new Vector2(100, 100);
                 destroyed = true;
             }
+       //     */
         }
         else if (target.gameObject.name.Equals("Ball"))
         {
