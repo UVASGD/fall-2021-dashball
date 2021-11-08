@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class playerBoundsBoss : MonoBehaviour
 {
-    public GameObject TheBoss;
     // Start is called before the first frame update
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.name == "player")
+        if (col.gameObject.name == "Player")
         {
             col.gameObject.GetComponent<Rigidbody2D>().velocity = col.gameObject.GetComponent<Rigidbody2D>().velocity * -1;
         }

@@ -7,8 +7,8 @@ public class bossAi : MonoBehaviour
     //0 = nothing, 1 = starting animation, 2 = shoot squares, 3 = shoot squares and move, 4 respawning squares
     //shot squares can be destroyed adn if they are leaves slot open 
     int phase = 0;
-    int attackSquare = 2;
-    [HideInInspector] public int hp = 4;
+    int attackSquare = 0;
+    [HideInInspector] public int hp = 3;
     //holds all squares used for boss room
     [HideInInspector] public List<GameObject> bossList = new List<GameObject>();
     bool firstGo = false;
@@ -18,16 +18,16 @@ public class bossAi : MonoBehaviour
 
     public List<int> toRemove = new List<int>();
 
+    double waitTime = 2;
     void Start()
     {
         phase = 1;
-                //2;
         //finds all squares in game space and adds them to list
         foreach (GameObject bossSqaure in GameObject.FindGameObjectsWithTag("bossSquare"))
         {
             bossList.Add(bossSqaure);
         }
-        for (int i = 0; i < 28; i++)
+        for (int i = 0; i < bossList.Count; i++)
             boxNumbers.Add(i);
     }
 
@@ -53,12 +53,11 @@ public class bossAi : MonoBehaviour
                 if (numbersHolder.Count == 0)
                     Phase2();
         }
-
     }
 
     public void goPhase2()
     {
-        phase=2;
+        phase = 2;
     }
 
     bool checkShots()
@@ -81,6 +80,11 @@ public class bossAi : MonoBehaviour
         return true;
     }
 
+    public int getHP()
+    {
+        return hp;
+    }
+
     void Phase2()
     {
         int holder;
@@ -89,8 +93,10 @@ public class bossAi : MonoBehaviour
         {
             holder = (Random.Range(0, boxNumbers.Count - 1));
             shooter = boxNumbers[holder];
+
             numbersHolder.Add(shooter);
-            boxNumbers.Remove(holder);
+            boxNumbers.Remove(shooter);
+
             bossList[shooter].GetComponent<boxBullet>().Shoot();
         }
     }
@@ -98,12 +104,16 @@ public class bossAi : MonoBehaviour
     void Phase1()
     {
         //get random sqaure
-        attackSquare = //3;
-                        (Random.Range(0, bossList.Count - 1));
-        Debug.Log(attackSquare);
+        attackSquare //= 26;
+         = (Random.Range(0, bossList.Count - 1));
 
         //   bossList[attackSquare].GetComponent<SpriteRenderer>().color = Color.blue;
 
         bossList[attackSquare].GetComponent<boxBullet>().Shoot();
+    }
+
+    public void timeDown()
+    {
+        waitTime -= .2;
     }
 }

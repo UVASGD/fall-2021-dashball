@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class boxBullet : MonoBehaviour
 {
-
     public int damage = 15;
     float distance = 0.0f;
     Rigidbody2D rb;
@@ -13,18 +12,13 @@ public class boxBullet : MonoBehaviour
     public bool destroyable = false;
     bool destroyed = false;
     Vector3 loc;
-
     float xcord;
     float ycord;
-
     float movePower = 0.15f;
-
     bool comeBack = false;
-
     bool goNext = false;
-
     float respawnTimer;
-
+    double respawnWait = 2.6;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +62,7 @@ public class boxBullet : MonoBehaviour
         else if (destroyed)
         {
             respawnTimer += Time.deltaTime;
-            if (respawnTimer > 2)
+            if (respawnTimer > respawnWait)
                 Respawn();
         }
     }
@@ -155,25 +149,28 @@ public class boxBullet : MonoBehaviour
         {
 
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-            rb.AddForce(new Vector2(0, -10) * movePower);
+      //      rb.AddForce(new Vector2(0, -10) * movePower);
         }
         else if (direction == 2)
         {
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-            rb.AddForce(new Vector2(-10, 0) * movePower);
+        //    rb.AddForce(new Vector2(-10, 0) * movePower);
         }
         else if (direction == 3)
         {
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-            rb.AddForce(new Vector2(0, 10) * movePower);
+          //  rb.AddForce(new Vector2(0, 10) * movePower);
         }
         else
         {
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-            rb.AddForce(new Vector2(10, 0) * movePower);
+            //rb.AddForce(new Vector2(10, 0) * movePower);
         }
-        //   bossList[attackSquare].GetComponent<SpriteRenderer>().color = new Color (1, 0, 0, 1); ;
+        Debug.Log(gameObject.name);
+        //   gameObject.GetComponent<SpriteRenderer>().color = new Color (Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1);
         destroyable = true;
+        comeBack = false;
+        distance=0;
     }
 
     void OnCollisionEnter2D(Collision2D target)
