@@ -44,10 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c613febe8bcb44d8678f054613bfe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 5544524500557056195, guid: 99c87cf372352bb47aeb96307e14665e, type: 3}
+  ball: {fileID: 0}
   ballStart: {x: 0, y: 0, z: 0}
-  player: {fileID: 5497589984008248219, guid: c9742289ec4c6d844b2b8caa68fe42d9, type: 3}
+  player: {fileID: 0}
   playerStart: {x: 0, y: 0, z: 0}
+  isActive: 0
+  startButton: {fileID: 0}
+  levelCoverText: {fileID: 0}
+  exitButton: {fileID: 0}
+  controlButton: {fileID: 0}
+  aboutButton: {fileID: 0}
 --- !u!1 &1478793117193559092
 GameObject:
   m_ObjectHideFlags: 0
