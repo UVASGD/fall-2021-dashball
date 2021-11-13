@@ -18,7 +18,7 @@ public class enemyAiPatrol : MonoBehaviour
     //speed
     public float speed = 200f;
     //how many nodes to look ahead
-    public float nextWaypointDistance =3f;
+    public float nextWaypointDistance =.75f;
     Path path;
     int currentWaypoint = 0;
 

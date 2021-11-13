@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 6071130604794827613}
   - component: {fileID: 6071130604794827611}
   - component: {fileID: 4656212073672737534}
+  - component: {fileID: 409933602}
   m_Layer: 0
   m_Name: patrol enemy
   m_TagString: enemy
@@ -61,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 6071130604794827587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.895613, y: 23.083199, z: 0}
-  m_LocalScale: {x: 6.353928, y: 3.632787, z: 1}
+  m_LocalScale: {x: 3.25, y: 3.25, z: 1}
   m_Children:
   - {fileID: 6071130603675166790}
   - {fileID: 6071130604890972258}
@@ -146,7 +147,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6071130604794827587}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 3e17b72909d2fee43be25b9ea6e7ac81, type: 2}
   m_IsTrigger: 0
@@ -213,6 +214,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772b999ad6c523740853c7b7a64c4414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point1x: -1
+  point1y: 20
+  point2x: -3
+  point2y: 9
+  speed: 200
+  nextWaypointDistance: 0.7
+  stopChase: 0.8
+  damage: 5
+  swingTimer: 1.5
+  lastSwing: 0
+--- !u!61 &409933602
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071130604794827587}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
 --- !u!1 &6071130604890972261
 GameObject:
   m_ObjectHideFlags: 0

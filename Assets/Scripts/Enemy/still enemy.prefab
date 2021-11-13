@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3186187933118089821}
   - component: {fileID: 3186187933118089820}
   - component: {fileID: 6313181546016961200}
+  - component: {fileID: 392131571083000495}
   m_Layer: 0
   m_Name: still enemy
   m_TagString: enemy
@@ -60,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 3186187933118089794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.02, y: 11.46, z: 0}
-  m_LocalScale: {x: 6.353928, y: 3.632787, z: 1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_Children:
   - {fileID: 3186187932090249543}
   - {fileID: 3186187933558831459}
@@ -145,7 +146,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3186187933118089794}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 3e17b72909d2fee43be25b9ea6e7ac81, type: 2}
   m_IsTrigger: 0
@@ -188,6 +189,32 @@ MonoBehaviour:
   damage: 0.99
   swingTimer: 0.36
   lastSwing: 0.96
+--- !u!61 &392131571083000495
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186187933118089794}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
 --- !u!1 &3186187933558831460
 GameObject:
   m_ObjectHideFlags: 0

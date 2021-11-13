@@ -16,7 +16,7 @@ public class getScale : MonoBehaviour
          {
             hold = enemyBase.GetComponent<enemyAiPath>().giveScale();
          }
-        else if (enemyBase.GetComponent<enemyAiStill>() == null)
+        else if (enemyBase.GetComponent<enemyAiStill>() != null)
         {
             hold = enemyBase.GetComponent<enemyAiStill>().giveScale();
         }

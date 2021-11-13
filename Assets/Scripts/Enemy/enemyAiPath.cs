@@ -10,7 +10,7 @@ public class enemyAiPath : MonoBehaviour
     //speed
     public float speed = 200f;
     //how many nodes to look ahead
-    public float nextWaypointDistance =3f;
+    public float nextWaypointDistance =.75f;
     Path path;
     int currentWaypoint = 0;
 
@@ -64,7 +64,7 @@ public class enemyAiPath : MonoBehaviour
         float toTarget = Vector2.Distance(rb.position, target.position);
 
 
-
+       
 
 
         //resets path if no path or reached end of path and is far enough away from player
@@ -99,6 +99,10 @@ public class enemyAiPath : MonoBehaviour
         //check distance to next node on path
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         
+         //if(//distance to greate from current way put add strong force pushing back toward it (normalize vector towards it like with crosshair)
+        //      rb2d.AddForce(aim.normalized * crosshairDistance * dashPower, ForceMode2D.Impulse); 
+        //)
+
         //check if move far enough to next node on path and update if so
         if(distance < nextWaypointDistance)
         {
