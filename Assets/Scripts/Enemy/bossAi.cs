@@ -104,8 +104,7 @@ public class bossAi : MonoBehaviour
     void Phase1()
     {
         //get random sqaure
-        attackSquare = 0;
-        // = (Random.Range(0, bossList.Count - 1));
+        attackSquare = (Random.Range(0, bossList.Count - 1));
 
         //   bossList[attackSquare].GetComponent<SpriteRenderer>().color = Color.blue;
 
