@@ -9,9 +9,7 @@ public class GameManager : MonoBehaviour
 {
     //gameObjects
     public GameObject ball;
-    public Vector3 ballStart;
     public GameObject player;
-    public Vector3 playerStart;
 
     public bool isActive = false;
 
@@ -22,26 +20,21 @@ public class GameManager : MonoBehaviour
     public Button controlButton;
     public Button aboutButton;
 
+    public Slider healthBar;
+    public Slider dashBar;
+
     // Start is called before the first frame update
     void Start()
     {
-        ballStart = ball.transform.position;
-        playerStart = player.transform.position;
-        
-        //these try/catches are for debug scenes w/o a startbutton
-        try{
-        startButton.gameObject.GetComponent<Button>();
-        startButton.onClick.AddListener(StartGame);
-        }
-        catch{
-            StartGame();
-        }
-        //these try/catches or for non-start games wihtout exit/control buttons
         try {
+            startButton.gameObject.GetComponent<Button>();
+            startButton.onClick.AddListener(StartGame);
             exitButton.gameObject.GetComponent<Button>();
             exitButton.onClick.AddListener(ExitGame);
             controlButton.gameObject.GetComponent<Button>();
             aboutButton.gameObject.GetComponent<Button>();
+            healthBar.gameObject.GetComponent<Slider>();
+            dashBar.gameObject.GetComponent<Slider>();
         }
         catch {
 
@@ -61,21 +54,20 @@ public class GameManager : MonoBehaviour
         if (scene.name == "StartMenu") {
 		    SceneManager.LoadScene("Level1");
         }
-        //these are for debug scenes
-        if(startButton){
-            startButton.gameObject.SetActive(false);
+        if (scene.name == "Victory") {
+		    SceneManager.LoadScene("StartMenu");
         }
-        if(levelCoverText){
+        try {
+            startButton.gameObject.SetActive(false);
             levelCoverText.gameObject.SetActive(false);
         }
+        catch {}
     }
 
     public void ResetGame(){
-        //temp for demo, resets positions
-        ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
-        ball.transform.position = ballStart;
-        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
-        player.transform.position = playerStart;
+        isActive = false;
+        Scene scene = SceneManager.GetActiveScene();
+        
     }
 
     public void ExitGame() {
