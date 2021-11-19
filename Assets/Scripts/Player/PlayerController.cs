@@ -130,8 +130,7 @@ public class PlayerController : Destructible
     }
 
     public override void Die() {
-		Destroy(gameObject);
-        gm.isActive = false;
+		gm.isActive = false;
         SceneManager.LoadScene("Defeat");
     }
 

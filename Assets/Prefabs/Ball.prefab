@@ -138,6 +138,7 @@ MonoBehaviour:
   pc: {fileID: 0}
   ballrb: {fileID: 0}
   magnetSpeed: 5
+  maxSpeed: 20
   damage: 25
   swingTimer: 1
   lastSwing: 0

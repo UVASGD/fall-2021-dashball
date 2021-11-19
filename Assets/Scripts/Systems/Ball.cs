@@ -12,6 +12,8 @@ public class Ball : MonoBehaviour
     public Rigidbody2D ballrb;
     public float magnetSpeed;
 
+    public float maxSpeed;
+
     //attack properties
     public float damage = 25;
     public float swingTimer = 1; //ie how long between "attacks" (just so it doesnt do a lot of little attacks, may have to modify this system)
@@ -35,6 +37,10 @@ public class Ball : MonoBehaviour
     void Update()
     {
         lastSwing += Time.deltaTime;
+        if(ballrb.velocity.magnitude > maxSpeed){
+            //note: using velocity makes it easily push physics objects away instead of bouncing off of them (as intended)2
+                ballrb.velocity = ballrb.velocity.normalized * maxSpeed;
+        }
     }
     private void FixedUpdate()
     {
