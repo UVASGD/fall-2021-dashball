@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         if (scene.name == "StartMenu") {
 		    SceneManager.LoadScene("Level1");
         }
-        if (scene.name == "Victory") {
+        if (scene.name == "Victory" || scene.name == "Defeat") {
 		    SceneManager.LoadScene("StartMenu");
         }
         try {

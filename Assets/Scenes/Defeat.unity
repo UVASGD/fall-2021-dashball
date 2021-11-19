@@ -429,7 +429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'YOU BEAT THE GAME!!!
+  m_text: 'GAME OVER
 
 '
   m_isRightToLeft: 0

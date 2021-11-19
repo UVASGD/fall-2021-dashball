@@ -44,10 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c613febe8bcb44d8678f054613bfe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 5544524500557056195, guid: 99c87cf372352bb47aeb96307e14665e, type: 3}
-  ballStart: {x: 0, y: 0, z: 0}
-  player: {fileID: 5497589984008248219, guid: c9742289ec4c6d844b2b8caa68fe42d9, type: 3}
-  playerStart: {x: 0, y: 0, z: 0}
+  ball: {fileID: 0}
+  player: {fileID: 0}
   isActive: 0
   startButton: {fileID: 0}
   levelCoverText: {fileID: 0}
@@ -55,6 +53,7 @@ MonoBehaviour:
   controlButton: {fileID: 0}
   aboutButton: {fileID: 0}
   healthBar: {fileID: 0}
+  dashBar: {fileID: 0}
 --- !u!1 &1478793117193559092
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,6 +65,7 @@ GameObject:
   - component: {fileID: 1478793117193559240}
   - component: {fileID: 1478793117193559095}
   - component: {fileID: 1478793117193559093}
+  - component: {fileID: 5853590780784964041}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -138,3 +138,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478793117193559092}
   m_Enabled: 1
+--- !u!114 &5853590780784964041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478793117193559092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8588be968af89b446afafdc75476c7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  smoothingSpeed: 20
+  offset: {x: 0, y: 0, z: -10}
+  boundBox: {fileID: 0}

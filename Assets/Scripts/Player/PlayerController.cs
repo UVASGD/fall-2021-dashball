@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Destructible
 {
 
     //TODOS FROM PlayerMovement.cs
@@ -126,6 +127,12 @@ public class PlayerController : MonoBehaviour
         }
         currentMaxSpeed = maxMoveSpeed;
         
+    }
+
+    public override void Die() {
+		Destroy(gameObject);
+        gm.isActive = false;
+        SceneManager.LoadScene("Defeat");
     }
 
 }

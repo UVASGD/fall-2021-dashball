@@ -7772,7 +7772,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   hitPoints: 0
-  gm: {fileID: 0}
   xSpeed: 0.17
   ySpeed: 0.39
   speed: 0.1
@@ -7962,7 +7961,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   hitPoints: 0
-  gm: {fileID: 1941151002}
 --- !u!1 &1010958652
 GameObject:
   m_ObjectHideFlags: 0
@@ -8249,6 +8247,21 @@ PrefabInstance:
       propertyPath: boundBox
       value: 
       objectReference: {fileID: 390261131}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 908086067}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: boundBox
+      value: 
+      objectReference: {fileID: 390261131}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: smoothingSpeed
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec488e3889462e48ad8f4f3a2be1d8a, type: 3}
 --- !u!1 &1533171335
