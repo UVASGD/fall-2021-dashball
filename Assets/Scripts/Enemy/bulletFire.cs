@@ -7,7 +7,7 @@ public class bulletFire : MonoBehaviour
 public float bulletForce = 100.0f;
 public Rigidbody2D rb;
 
-
+ public float damage= 5.0f; //damage per attack
 void Start ()
 {
     //fires bullet with it's force
@@ -16,13 +16,24 @@ void Start ()
 
 
 void OnTriggerEnter2D(Collider2D target)
-{   //display name of what is hit
-    Debug.Log(target.name);
+{   
+    //turn off friendly fire
+    if (target.tag == "enemy")
+    return;
+
     //for somereason really hates camerabounds of unmoving camera
     if(target.name != "CameraBounds")
-    //removes object
-    Destroy(gameObject);
+    {
+        //checks to see if hit player
+        if(target.name.Equals("Player"))
+            Attack(target.GetComponent<Destructible>());
+        //removes object
+        Destroy(gameObject);
+    }
 }
-
-
+    //deals damage based on bullet damage
+    private void Attack(Destructible target){
+            target.TakeDamage(damage);
+       
+}
 }
