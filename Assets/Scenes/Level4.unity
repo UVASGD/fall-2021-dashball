@@ -8193,6 +8193,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1478793116343536573, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1917865221}
+    - target: {fileID: 1478793116343536573, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 17787406}
+    - target: {fileID: 1478793116343536573, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
       propertyPath: startButton
       value: 
       objectReference: {fileID: 2031599382}
@@ -8207,6 +8217,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 17787405}
     - target: {fileID: 1478793117193559094, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: boundBox
+      value: 
+      objectReference: {fileID: 910759316}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: boundBox
       value: 
@@ -9206,6 +9221,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 5544524500557056220, guid: 99c87cf372352bb47aeb96307e14665e,
+        type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 550205692}
+    - target: {fileID: 5544524500557056220, guid: 99c87cf372352bb47aeb96307e14665e,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 17787404}
     - target: {fileID: 5544524500557056222, guid: 99c87cf372352bb47aeb96307e14665e,
         type: 3}
       propertyPath: m_Sprite

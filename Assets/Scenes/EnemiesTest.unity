@@ -7770,17 +7770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb00d2fa753400459f4d74f625e6181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  hitPoints: 0
-  gm: {fileID: 0}
-  xSpeed: 0.17
-  ySpeed: 0.39
-  speed: 0.1
-  distance: 2.82
-  target: {fileID: 908086062}
-  damage: 20
-  swingTimer: 5
-  lastSwing: 0
 --- !u!50 &430026129
 Rigidbody2D:
   serializedVersion: 4
@@ -7832,6 +7821,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4020132765657539517, guid: f5ec8184511d4fb46ad3de49d6756c33, type: 3}
   spawnPoint: {fileID: 1533171336}
+  shootTimer: 0
+  lastFire: 0
+  offsetMin: 0
+  offsetMax: 0
 --- !u!1 &696444669 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5544524500557056195, guid: 99c87cf372352bb47aeb96307e14665e,
@@ -7962,7 +7955,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   hitPoints: 0
-  gm: {fileID: 1941151002}
 --- !u!1 &1010958652
 GameObject:
   m_ObjectHideFlags: 0
@@ -8249,6 +8241,21 @@ PrefabInstance:
       propertyPath: boundBox
       value: 
       objectReference: {fileID: 390261131}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 908086067}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: boundBox
+      value: 
+      objectReference: {fileID: 390261131}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: smoothingSpeed
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec488e3889462e48ad8f4f3a2be1d8a, type: 3}
 --- !u!1 &1533171335

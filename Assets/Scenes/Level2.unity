@@ -287,9 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72808557b84bb64191b59874678a83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1410059286}
-  playerControl: {fileID: 1410059284}
-  ball: {fileID: 180185941}
 --- !u!50 &93775186
 Rigidbody2D:
   serializedVersion: 4
@@ -444,9 +441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72808557b84bb64191b59874678a83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1410059286}
-  playerControl: {fileID: 1410059284}
-  ball: {fileID: 180185941}
 --- !u!50 &170533707
 Rigidbody2D:
   serializedVersion: 4
@@ -590,6 +584,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 5544524500557056220, guid: 99c87cf372352bb47aeb96307e14665e,
+        type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1152571321}
+    - target: {fileID: 5544524500557056220, guid: 99c87cf372352bb47aeb96307e14665e,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1410059284}
     - target: {fileID: 5544524500557056222, guid: 99c87cf372352bb47aeb96307e14665e,
         type: 3}
       propertyPath: m_Sprite
@@ -721,9 +725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72808557b84bb64191b59874678a83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1410059286}
-  playerControl: {fileID: 1410059284}
-  ball: {fileID: 180185941}
 --- !u!50 &475186026
 Rigidbody2D:
   serializedVersion: 4
@@ -1130,9 +1131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72808557b84bb64191b59874678a83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1410059286}
-  playerControl: {fileID: 1410059284}
-  ball: {fileID: 180185941}
 --- !u!50 &1014807428
 Rigidbody2D:
   serializedVersion: 4
@@ -1323,6 +1321,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1478793116343536573, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 180185941}
+    - target: {fileID: 1478793116343536573, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1410059286}
+    - target: {fileID: 1478793116343536573, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
       propertyPath: startButton
       value: 
       objectReference: {fileID: 997663131}
@@ -1337,6 +1345,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1410059285}
     - target: {fileID: 1478793117193559094, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: boundBox
+      value: 
+      objectReference: {fileID: 1317502919}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: boundBox
       value: 
