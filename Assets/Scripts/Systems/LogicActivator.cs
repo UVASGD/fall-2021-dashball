@@ -8,19 +8,32 @@ public class LogicActivator : MonoBehaviour
     //Click and drag the button gameobject out of the prefab folder to make more of these bad bois
 
     public bool on = false;
+    public int whoInteracts; //0 = ball only, 1 = player only, 2 = both/any
     public int type = 0; //0 = red button (remains active even when stepped off), 1 = blue button (deactivates if stepped off), 2 = switch (step on to toggle on/off), 3 = sticky
     Color c;
 
     private void Start()
     {
         c = GetComponent<SpriteRenderer>().color;
+        //setting colors to only one type based on convienece 
+        //(why?) red is just sticky but hard, so not its player only and sticky 
+        //switch and red can be both cause why not
+        if(type == 0 || type == 2){
+            whoInteracts = 2;
+        }
+        else if(type == 1){
+            whoInteracts = 1;
+        }
+        else if(type == 3){
+            whoInteracts = 0;
+        }
     }
 
     //Called whenever something enters the button/switch
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //If the ball has collided with the button
-        if (collision.gameObject.GetComponent<LogicInteractable>())
+        if (collision.gameObject.GetComponent<LogicInteractable>() && (whoInteracts == 2 || collision.gameObject.GetComponent<LogicInteractable>().interactableType == whoInteracts))
         {
             //If this is a switch
             if (type == 2)
