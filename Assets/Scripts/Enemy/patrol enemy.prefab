@@ -217,10 +217,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772b999ad6c523740853c7b7a64c4414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 25
+  hitPoints: 25
   point1x: -1
   point1y: 20
   point2x: -3
   point2y: 9
+  timeToDie: 1
   speed: 200
   nextWaypointDistance: 0.7
   stopChase: 0.8

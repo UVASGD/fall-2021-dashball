@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class enemyAiPath : MonoBehaviour
+public class enemyAiPath : Destructible
 {
     //what to chase after
     Transform target;
@@ -13,6 +13,8 @@ public class enemyAiPath : MonoBehaviour
     public float nextWaypointDistance =.75f;
     Path path;
     int currentWaypoint = 0;
+
+    public float timeToDie;
 
     bool reachedEndofPath=false;
     Seeker seeker;
@@ -123,4 +125,17 @@ public class enemyAiPath : MonoBehaviour
         //returns the distance  
         return stopChase;
     }
+
+    public override void Die() {
+		StartCoroutine(StartDying());
+    }
+
+    IEnumerator StartDying(){
+        swingTimer = timeToDie * 4;
+        damage = 0f;
+        speed = 0f;
+        yield return new WaitForSeconds(timeToDie);
+        Destroy(gameObject);
+    }
+
 }
