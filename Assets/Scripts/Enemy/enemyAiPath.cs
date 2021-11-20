@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.UI;
 
 public class enemyAiPath : Destructible
 {
@@ -14,6 +15,7 @@ public class enemyAiPath : Destructible
     Path path;
     int currentWaypoint = 0;
     public GameManager gm;
+    public Slider healthbar;
 
     public float timeToDie;
 
@@ -23,6 +25,7 @@ public class enemyAiPath : Destructible
     //distance enemy will stop tracking player when they get this close (and melee range)
     public float stopChase = 2.0f;
 
+    // public EnemyHealthBar healthbar;
 
     //melee enemy variables //from specners work in enemyAi.cs
       //attack-y stuff
@@ -40,6 +43,7 @@ public class enemyAiPath : Destructible
             // StartCoroutine(UpdatePath());
             Debug.Log(gm.isActive);
             InvokeRepeating("UpdatePath", 0f,.5f);
+            // healthbar.SetHealth(hitPoints, maxHealth);
  
     }
 
@@ -137,6 +141,10 @@ public class enemyAiPath : Destructible
         speed = 0f;
         yield return new WaitForSeconds(timeToDie);
         Destroy(gameObject);
+    }
+
+    public override void UpdateHealth() {
+        healthbar.value = hitPoints;
     }
 
 }
