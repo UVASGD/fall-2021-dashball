@@ -6,6 +6,7 @@ public class LogicActivator : MonoBehaviour
 {
     //All button/switch logic stored here
     //Click and drag the button gameobject out of the prefab folder to make more of these bad bois
+    public Animator animator;
 
     public bool on = false;
     public int whoInteracts; //0 = ball only, 1 = player only, 2 = both/any
@@ -14,6 +15,11 @@ public class LogicActivator : MonoBehaviour
 
     private void Start()
     {
+
+        //c = GetComponent<SpriteRenderer>().color;
+        animator = GetComponent<Animator>();
+        animator.SetBool("On", on);
+
         c = GetComponent<SpriteRenderer>().color;
         //setting colors to only one type based on convienece 
         //(why?) red is just sticky but hard, so not its player only and sticky 
@@ -27,6 +33,7 @@ public class LogicActivator : MonoBehaviour
         else if(type == 3){
             whoInteracts = 0;
         }
+
     }
 
     //Called whenever something enters the button/switch
@@ -40,29 +47,31 @@ public class LogicActivator : MonoBehaviour
             {
                 //Toggle activate state
                 on = !on;
+                animator.SetBool("On", on);
 
                 if (on)
                 {
-                    Color col = c;
+                    /*Color col = c;
                     col.r += 30;
                     col.b += 30;
                     col.g += 30;
-                    GetComponent<SpriteRenderer>().color = col;
+                    GetComponent<SpriteRenderer>().color = col;*/
                 }
                 else
                 {
-                    GetComponent<SpriteRenderer>().color = c;
+                    //GetComponent<SpriteRenderer>().color = c;
                 }
             }
             else
             {
                 on = true;
+                animator.SetBool("On", on);
 
-                Color col = c;
+                /*Color col = c;
                 col.r += 10;
                 col.b += 10;
                 col.g += 10;
-                GetComponent<SpriteRenderer>().color = col;
+                GetComponent<SpriteRenderer>().color = col;*/
             }
         }
     }
@@ -76,7 +85,8 @@ public class LogicActivator : MonoBehaviour
             if (type == 1 || type == 3)
             {
                 on = false;
-                GetComponent<SpriteRenderer>().color = c;
+                animator.SetBool("On", on);
+                //GetComponent<SpriteRenderer>().color = c;
             }
         }
     }
