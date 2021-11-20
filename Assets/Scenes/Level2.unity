@@ -284,9 +284,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 93775184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f72808557b84bb64191b59874678a83c, type: 3}
+  m_Script: {fileID: 11500000, guid: c84812ef1d7e5ce4e8805a5d79059875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1410059286}
+  playerControl: {fileID: 1410059284}
+  ball: {fileID: 180185941}
 --- !u!50 &93775186
 Rigidbody2D:
   serializedVersion: 4
@@ -438,9 +441,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 170533705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f72808557b84bb64191b59874678a83c, type: 3}
+  m_Script: {fileID: 11500000, guid: c84812ef1d7e5ce4e8805a5d79059875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1410059286}
+  playerControl: {fileID: 1410059284}
+  ball: {fileID: 180185941}
 --- !u!50 &170533707
 Rigidbody2D:
   serializedVersion: 4
@@ -722,9 +728,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 475186024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f72808557b84bb64191b59874678a83c, type: 3}
+  m_Script: {fileID: 11500000, guid: c84812ef1d7e5ce4e8805a5d79059875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1410059286}
+  playerControl: {fileID: 1410059284}
+  ball: {fileID: 180185941}
 --- !u!50 &475186026
 Rigidbody2D:
   serializedVersion: 4
@@ -1128,9 +1137,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1014807426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f72808557b84bb64191b59874678a83c, type: 3}
+  m_Script: {fileID: 11500000, guid: c84812ef1d7e5ce4e8805a5d79059875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1410059286}
+  playerControl: {fileID: 1410059284}
+  ball: {fileID: 180185941}
 --- !u!50 &1014807428
 Rigidbody2D:
   serializedVersion: 4
