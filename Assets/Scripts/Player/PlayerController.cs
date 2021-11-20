@@ -57,7 +57,8 @@ public class PlayerController : Destructible
         if (gm.isActive) {
             movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            fire = Input.GetMouseButton(0);    
+            fire = Input.GetMouseButton(0);  
+            InvokeRepeating("RegenerateStamina", 0f, .5f);
         }
 
     }
@@ -72,7 +73,6 @@ public class PlayerController : Destructible
             rb2d.velocity = new Vector2(0,0);
             rb2d.AddForce(aim.normalized * crosshairDistance * dashPower, ForceMode2D.Impulse);
             lastDash = 0f;
-            
         }
         lastDash += Time.deltaTime;
 
@@ -142,4 +142,18 @@ public class PlayerController : Destructible
         SceneManager.LoadScene("Defeat");
     }
 
+    public override void TakeDamage(float amount)
+    {
+        this.hitPoints -= amount;
+		gm.UpdateHealth(hitPoints);
+		// AudioSource.PlayClipAtPoint(clips[Random.Range(0,2)], transform.position);
+        if (hitPoints <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void RegenerateStamina() {
+        gm.UpdateStamina(lastDash);
+    }
 }
