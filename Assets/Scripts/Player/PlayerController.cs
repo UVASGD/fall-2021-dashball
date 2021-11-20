@@ -41,6 +41,9 @@ public class PlayerController : Destructible
     public bool ballEntered1 = false;
     public bool ballEntered2 = false;
 
+    //DEATH
+    public float timeToDie;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -130,7 +133,12 @@ public class PlayerController : Destructible
     }
 
     public override void Die() {
-		gm.isActive = false;
+		StartCoroutine(StartDying());
+    }
+
+    IEnumerator StartDying(){
+        yield return new WaitForSeconds(timeToDie);
+        gm.isActive = false;
         SceneManager.LoadScene("Defeat");
     }
 

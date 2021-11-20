@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyAiStill : MonoBehaviour
+public class enemyAiStill : Destructible
 {
    //what to chase after
     Transform target;
@@ -11,6 +11,7 @@ public class enemyAiStill : MonoBehaviour
     //distance enemy will stop tracking player when they get this close (and melee range)
     public float stopChase = 2.0f;
 
+    public float timeToDie;
 
     //melee enemy variables //from specners work in enemyAi.cs
       //attack-y stuff
@@ -54,4 +55,16 @@ public class enemyAiStill : MonoBehaviour
         //returns the distance  
         return stopChase;
     }
+
+    public override void Die() {
+		StartCoroutine(StartDying());
+    }
+
+    IEnumerator StartDying(){
+        swingTimer = timeToDie * 4;
+        damage = 0f;
+        yield return new WaitForSeconds(timeToDie);
+        Destroy(gameObject);
+    }
+
 }
