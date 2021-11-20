@@ -52,7 +52,7 @@ public class Ball : MonoBehaviour
     {
         Vector2 dir = (this.transform.position - gm.player.transform.position).normalized;
 
-        if(Input.GetKey("space")){
+        if(Input.GetKey("space") && gm.isActive){
             ballrb.AddForce(-dir*magnetSpeed);
         }
 
