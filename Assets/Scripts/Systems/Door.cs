@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public LogicActivator[] activators = new LogicActivator[1]; //Attach buttons/switches here
-    public bool[] inverted = new bool[1]; //Should be the same sized list as activators.  This tells unity whether a button should be on or not
+    public bool[] inverted; //Should be the same sized list as activators.  This tells unity whether a button should be on or not
     Vector2 s;
     public float doorSpeed = 15;
     public bool onlyOneNeeded = false;
@@ -13,6 +13,7 @@ public class Door : MonoBehaviour
     private void Start()
     {
         s = transform.localScale;
+        inverted = new bool[activators.Length];
     }
 
     private void FixedUpdate()
