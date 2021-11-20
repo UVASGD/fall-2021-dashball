@@ -10,6 +10,7 @@ public class bulletSpawn : MonoBehaviour
  public Transform spawnPoint;
 //what to fire at
 Transform target;
+public GameManager gm;
 
  //attack-y stuff (taken from spencers work on enemyAI)
     public float shootTimer; //ie how long between shots
@@ -28,15 +29,17 @@ Transform target;
 
  void Update ()
  {
+  if (gm.isActive) {
     //check to see if shoot
     //incrememnt shot timer
     lastFire += Time.deltaTime;
     //fire if timer higher than shot clock
-      if (lastFire >= shootTimer){
-        lastFire = 0;
-        Shoot();
-      }
- }
+    if (lastFire >= shootTimer){
+      lastFire = 0;
+      Shoot();
+    }
+  }
+}
 
     void Shoot()
     {

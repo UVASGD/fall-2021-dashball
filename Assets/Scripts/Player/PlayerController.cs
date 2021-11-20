@@ -111,15 +111,15 @@ public class PlayerController : Destructible
     }
 
     IEnumerator PowerUp(float duration) {
-        movePower *= 2f;
-        maxMoveSpeed *= 2f;
-        maxDashSpeed *= 2f;
-        currentMaxSpeed *= 2f;
+        movePower += 5f;
+        maxMoveSpeed += 5f;
+        maxDashSpeed += 5f;
+        currentMaxSpeed += 5f;
         yield return new WaitForSeconds(duration);
-        maxMoveSpeed /= 2f;
-        maxDashSpeed /= 2f;
-        currentMaxSpeed /= 2f;
-        movePower /= 2;
+        maxMoveSpeed -= 5f;
+        maxDashSpeed -= 5f;
+        currentMaxSpeed -= 5f;
+        movePower -= 5f;
     }
 
     IEnumerator Deccelerate() {
