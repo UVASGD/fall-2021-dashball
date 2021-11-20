@@ -50,6 +50,11 @@ public class GameManager : MonoBehaviour
     // Start the game
     public void StartGame() {
         isActive = true;
+        try {
+            healthBar.gameObject.SetActive(true);
+            dashBar.gameObject.SetActive(true);
+        }
+        catch {}
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "StartMenu") {
 		    SceneManager.LoadScene("Level1");
@@ -73,4 +78,21 @@ public class GameManager : MonoBehaviour
     public void ExitGame() {
         Application.Quit();
     }
+
+    public void UpdateHealth(float health) {
+        if (health <= 0){
+            healthBar.value = 0f;
+            return;
+        }
+        healthBar.value = health;
+    }
+
+    public void UpdateStamina(float stamina) {
+        if (stamina <= 0) {
+            dashBar.value = 0f;
+            return;
+        }
+        dashBar.value = stamina;
+    }
+
 }

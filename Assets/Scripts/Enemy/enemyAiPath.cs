@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.UI;
 
 public class enemyAiPath : Destructible
 {
@@ -13,15 +14,18 @@ public class enemyAiPath : Destructible
     public float nextWaypointDistance =.75f;
     Path path;
     int currentWaypoint = 0;
+    public GameManager gm;
+    public Slider healthbar;
 
     public float timeToDie;
 
     bool reachedEndofPath=false;
     Seeker seeker;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     //distance enemy will stop tracking player when they get this close (and melee range)
     public float stopChase = 2.0f;
 
+    // public EnemyHealthBar healthbar;
 
     //melee enemy variables //from specners work in enemyAi.cs
       //attack-y stuff
@@ -32,11 +36,14 @@ public class enemyAiPath : Destructible
     void Start()
     {
         //get components from objects
-        seeker = GetComponent<Seeker>();
-        rb = GetComponent<Rigidbody2D>();
-        target = GameObject.Find("Player").GetComponent<Transform>();
+            seeker = GetComponent<Seeker>();
+            rb = GetComponent<Rigidbody2D>();
+            target = GameObject.Find("Player").GetComponent<Transform>();
         //loop to find past
-        InvokeRepeating("UpdatePath", 0f,.5f);
+            // StartCoroutine(UpdatePath());
+            Debug.Log(gm.isActive);
+            InvokeRepeating("UpdatePath", 0f,.5f);
+            // healthbar.SetHealth(hitPoints, maxHealth);
  
     }
 
@@ -59,59 +66,57 @@ public class enemyAiPath : Destructible
 
     void FixedUpdate()
     {   
+        if (gm.isActive == true) {
+
         //increments the swing timer
-        lastSwing += Time.deltaTime;
+            lastSwing += Time.deltaTime;
 
         //check distance from enemy to player to stop crowding
-        float toTarget = Vector2.Distance(rb.position, target.position);
-
-
-       
-
+            float toTarget = Vector2.Distance(rb.position, target.position);
 
         //resets path if no path or reached end of path and is far enough away from player
-        if ((path==null || reachedEndofPath ==true) & stopChase <= toTarget)
-        {
-            seeker.StartPath(rb.position,target.position,OnPathComplete);
-            reachedEndofPath =false;
-            return;
-        }
+            if ((path==null || reachedEndofPath ==true) & stopChase <= toTarget)
+            {
+                seeker.StartPath(rb.position,target.position,OnPathComplete);
+                reachedEndofPath =false;
+                return;
+            }
         //check if reached end of path or to closer to player
      
        
-        if(currentWaypoint >= path.vectorPath.Count & stopChase > toTarget)
-        {
+            if(currentWaypoint >= path.vectorPath.Count & stopChase > toTarget)
+            {
             //deal melee damage (add indicator)
-            Attack(target.GetComponent<Destructible>());
+                Attack(target.GetComponent<Destructible>());
             
-            reachedEndofPath =true;
-            return;
-        }
+                reachedEndofPath =true;
+                return;
+            }
         //havent reached end of path
-        else
-        {
-            reachedEndofPath =false;
-        }
+            else
+            {
+                reachedEndofPath =false;
+            }
         //use path to get vector of motion
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         //apply force to object in direction
-        Vector2 force = direction * speed * Time.deltaTime;
-        rb.AddForce(force);
+            Vector2 force = direction * speed * Time.deltaTime;
+            rb.AddForce(force);
 
         //check distance to next node on path
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         
          //if(//distance to greate from current way put add strong force pushing back toward it (normalize vector towards it like with crosshair)
         //      rb2d.AddForce(aim.normalized * crosshairDistance * dashPower, ForceMode2D.Impulse); 
         //)
 
         //check if move far enough to next node on path and update if so
-        if(distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
+            if(distance < nextWaypointDistance)
+            {
+                currentWaypoint++;
+            }
         }
     }
-
     //taken from spencers work in enemyAi.cs
     private void Attack(Destructible target){
         if (lastSwing >= swingTimer){
@@ -136,6 +141,10 @@ public class enemyAiPath : Destructible
         speed = 0f;
         yield return new WaitForSeconds(timeToDie);
         Destroy(gameObject);
+    }
+
+    public override void UpdateHealth() {
+        healthbar.value = hitPoints;
     }
 
 }

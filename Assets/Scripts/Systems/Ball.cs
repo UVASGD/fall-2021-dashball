@@ -18,7 +18,7 @@ public class Ball : MonoBehaviour
     public Collider2D[] ballWalls;
 
     //attack properties
-    public float damage = 25;
+    public float damage = 10;
     public float swingTimer = 1; //ie how long between "attacks" (just so it doesnt do a lot of little attacks, may have to modify this system)
     public float lastSwing = 0; //the actual timer maybe I should use different names lol
 
@@ -115,6 +115,7 @@ public class Ball : MonoBehaviour
     private void Attack(Destructible target){
         if (lastSwing >= swingTimer){
             target.TakeDamage(damage);
+            target.UpdateHealth();
             lastSwing = 0;
         }
     }
