@@ -1798,13 +1798,18 @@ PrefabInstance:
       objectReference: {fileID: 390261131}
     - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 384291231}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
       propertyPath: boundBox
       value: 
       objectReference: {fileID: 390261131}
     - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: smoothingSpeed
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec488e3889462e48ad8f4f3a2be1d8a, type: 3}
@@ -30922,7 +30927,7 @@ PrefabInstance:
     - target: {fileID: 5497589984008248217, guid: c9742289ec4c6d844b2b8caa68fe42d9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27
+      value: 27.4
       objectReference: {fileID: 0}
     - target: {fileID: 5497589984008248217, guid: c9742289ec4c6d844b2b8caa68fe42d9,
         type: 3}

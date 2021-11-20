@@ -9851,7 +9851,8 @@ PrefabInstance:
       propertyPath: boundBox
       value: 
       objectReference: {fileID: 1702307077}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eec488e3889462e48ad8f4f3a2be1d8a, type: 3}
 --- !u!114 &2109809346 stripped
 MonoBehaviour:
@@ -9884,7 +9885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1330241107}
-  smoothingSpeed: 10
+  smoothingSpeed: 1
   offset: {x: 0, y: 0, z: -10}
   boundBox: {fileID: 1702307077}
 --- !u!20 &2109809352 stripped

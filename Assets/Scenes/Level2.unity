@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1410059285}
-  smoothingSpeed: 10
+  smoothingSpeed: 1
   offset: {x: 0, y: 0, z: -10}
   boundBox: {fileID: 1317502919}
 --- !u!1 &1251373413
