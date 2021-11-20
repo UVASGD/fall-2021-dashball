@@ -74,7 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f599c752a58636a48b176c92f1357bdd, type: 3}
+  m_Sprite: {fileID: -8371992961200338851, guid: f6adfb70b23d57f4b8d35a9cd4b44f58,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,9 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d5e68d61e30284fafa7b2db636eeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   movement: {x: 0, y: 0}
   aim: {x: 0, y: 0}
   fire: 0
+  gm: {fileID: 0}
   currentMaxSpeed: 10
   maxMoveSpeed: 10
   maxDashSpeed: 20
@@ -112,6 +116,7 @@ MonoBehaviour:
   neutral: {fileID: 0}
   dash: {fileID: 0}
   pos: {fileID: 0}
+  RecallActive: 0
   ballEntered1: 0
   ballEntered2: 0
 --- !u!58 &5497589984008248229
@@ -127,9 +132,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0038801432, y: 0}
+  m_Offset: {x: -0.0038801432, y: -0.0000009536743}
   serializedVersion: 2
-  m_Radius: 0.3011716
+  m_Radius: 0.3489294
 --- !u!50 &5497589984008248228
 Rigidbody2D:
   serializedVersion: 4
