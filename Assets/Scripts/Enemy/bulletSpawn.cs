@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class bulletSpawn : MonoBehaviour
 {
+
+    //For animating purposes
+    public Animator animator;
  //what is fired
  public GameObject bullet;
 //where bullet is spawned from
@@ -19,11 +22,15 @@ Transform target;
     //offsetMax of bullet fire (0 by default)
     public float offsetMax =0.0f;
 
+    // This is the minimum Time (seconds) required for animation!!!
+    float setupTime = 1.25f;
+
 
    void Start()
     {
         //get components from objects
         target = GameObject.Find("Player").GetComponent<Transform>();
+        animator = GetComponent<Animator>();
     }
 
  void Update ()
@@ -31,6 +38,8 @@ Transform target;
     //check to see if shoot
     //incrememnt shot timer
     lastFire += Time.deltaTime;
+
+    animator.SetFloat("TimeLeft", shootTimer - lastFire);
     //fire if timer higher than shot clock
       if (lastFire >= shootTimer){
         lastFire = 0;
