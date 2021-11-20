@@ -16,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - Ball
+  - 
   - 
   - 
   - 
@@ -41,6 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: switch
+    uniqueID: 3185956811
+    locked: 0
+  - name: Background
+    uniqueID: 916531687
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

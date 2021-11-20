@@ -14,6 +14,9 @@ public class Ball : MonoBehaviour
 
     public float maxSpeed;
 
+    //ball walls
+    public Collider2D[] ballWalls;
+
     //attack properties
     public float damage = 10;
     public float swingTimer = 1; //ie how long between "attacks" (just so it doesnt do a lot of little attacks, may have to modify this system)
@@ -31,6 +34,9 @@ public class Ball : MonoBehaviour
         if (!gm)
             gm = GameObject.FindObjectOfType<GameManager>();
         //Changed this so you dont need to find name of game manager anymore, just the component
+        foreach(Collider2D i in ballWalls){
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), i);
+        }
     }
 
     // Update is called once per frame
@@ -46,7 +52,7 @@ public class Ball : MonoBehaviour
     {
         Vector2 dir = (this.transform.position - gm.player.transform.position).normalized;
 
-        if(Input.GetKey("space")){
+        if(Input.GetKey("space") && gm.isActive){
             ballrb.AddForce(-dir*magnetSpeed);
         }
 
