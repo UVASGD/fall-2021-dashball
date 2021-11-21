@@ -21,6 +21,9 @@ public class PlayerController : Destructible
 
     public Animator animator;
 
+    //sounds
+    public AudioClip[] clips = new AudioClip[4]; //0: dash, 1: hit wall/ball, 2: take damage, 3: dying
+
     //im sorta copying this from last year's project im 90% sure some of it is not necessary
     Rigidbody2D rb2d;
     public float currentMaxSpeed;
@@ -73,6 +76,7 @@ public class PlayerController : Destructible
 
         if(fire && lastDash >= dashCD){
             StartCoroutine(Deccelerate());
+            AudioSource.PlayClipAtPoint(clips[0], transform.position);
             rb2d.velocity = new Vector2(0,0);
             rb2d.AddForce(aim.normalized * crosshairDistance * dashPower, ForceMode2D.Impulse);
             lastDash = 0f;
@@ -117,6 +121,11 @@ public class PlayerController : Destructible
         
     }
 
+    private void OnCollisionEnter2D(Collision2D col){
+        //if we hit anything we go "ping"
+        AudioSource.PlayClipAtPoint(clips[1], transform.position);
+    }
+
     IEnumerator PowerUp(float duration) {
         movePower += 5f;
         maxMoveSpeed += 5f;
@@ -141,6 +150,7 @@ public class PlayerController : Destructible
 
     public override void Die() {
         animator.SetBool("Dying", true);
+        AudioSource.PlayClipAtPoint(clips[3], transform.position);
 		StartCoroutine(StartDying());
     }
 
@@ -154,7 +164,8 @@ public class PlayerController : Destructible
     {
         this.hitPoints -= amount;
 		gm.UpdateHealth(hitPoints);
-		// AudioSource.PlayClipAtPoint(clips[Random.Range(0,2)], transform.position);
+        //so kind of you to bring this line over commented out <3
+		AudioSource.PlayClipAtPoint(clips[2], transform.position);
         if (hitPoints <= 0)
         {
             Die();

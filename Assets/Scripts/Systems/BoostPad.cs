@@ -31,7 +31,6 @@ public class BoostPad : MonoBehaviour
 
     private void BoostIt(Interactable target){
         if(lastBoost>=boostTimer){
-            Debug.Log(transform.eulerAngles.z);
             target.BoostIt(transform.eulerAngles.z, force);
             lastBoost = 0f;
         }

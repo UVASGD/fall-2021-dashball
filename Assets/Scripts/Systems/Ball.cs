@@ -14,6 +14,10 @@ public class Ball : MonoBehaviour
 
     public float maxSpeed;
 
+    //sounds
+    public AudioClip[] clips = new AudioClip[3]; //0: discharge, 1: recharge, 2: bonk
+    private bool hasRecharged;
+
     //ball walls
     public Collider2D[] ballWalls;
 
@@ -37,9 +41,12 @@ public class Ball : MonoBehaviour
         if (!gm)
             gm = GameObject.FindObjectOfType<GameManager>();
         //Changed this so you dont need to find name of game manager anymore, just the component
+        
         foreach(Collider2D i in ballWalls){
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), i);
         }
+
+        hasRecharged = false;
     }
 
     // Update is called once per frame
@@ -51,14 +58,13 @@ public class Ball : MonoBehaviour
                 ballrb.velocity = ballrb.velocity.normalized * maxSpeed;
         }
 
-        if(lastSwing < swingTimer)
-        {
-            animator.SetBool("Charged", false);
-        }
-        else
+        if(!hasRecharged && lastSwing > swingTimer)
         {
             animator.SetBool("Charged", true);
+            hasRecharged = true;
+            AudioSource.PlayClipAtPoint(clips[1], transform.position);
         }
+    
     }
     private void FixedUpdate()
     {
@@ -114,6 +120,7 @@ public class Ball : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
+        AudioSource.PlayClipAtPoint(clips[2], transform.position);
         //If player hit
         if (col.gameObject.GetComponent<PlayerController>())
         {
@@ -129,8 +136,11 @@ public class Ball : MonoBehaviour
 
     private void Attack(Destructible target){
         if (lastSwing >= swingTimer){
+            AudioSource.PlayClipAtPoint(clips[0], transform.position);
+            hasRecharged = false;
             target.TakeDamage(damage);
             target.UpdateHealth();
+            animator.SetBool("Charged", false);
             lastSwing = 0;
         }
     }

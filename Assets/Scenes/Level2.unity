@@ -1361,6 +1361,11 @@ PrefabInstance:
       propertyPath: boundBox
       value: 
       objectReference: {fileID: 1317502919}
+    - target: {fileID: 5806017286969273995, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c269b01b514d711479a3f17033647bea, type: 3}
     - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: boundBox

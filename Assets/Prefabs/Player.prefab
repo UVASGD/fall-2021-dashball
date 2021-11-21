@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 730ee7f451dddbd43aa40a2a873f5671, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -209,6 +209,11 @@ MonoBehaviour:
   fire: 0
   gm: {fileID: 0}
   animator: {fileID: 2563436621729452978}
+  clips:
+  - {fileID: 8300000, guid: 9889b181678df7a42b5eca136626a753, type: 3}
+  - {fileID: 8300000, guid: b678a2db24a5591469d407d123793669, type: 3}
+  - {fileID: 8300000, guid: b79dc8aca251eff40815f666bfea698e, type: 3}
+  - {fileID: 8300000, guid: eb2a40150ffde8e42b711f874145824d, type: 3}
   currentMaxSpeed: 10
   maxMoveSpeed: 10
   maxDashSpeed: 20
