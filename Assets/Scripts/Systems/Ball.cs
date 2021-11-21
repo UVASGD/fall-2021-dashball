@@ -17,6 +17,8 @@ public class Ball : MonoBehaviour
     //ball walls
     public Collider2D[] ballWalls;
 
+    public Animator animator;
+
     //attack properties
     public float damage = 10;
     public float swingTimer = 1; //ie how long between "attacks" (just so it doesnt do a lot of little attacks, may have to modify this system)
@@ -28,6 +30,7 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         ballrb = GetComponent<Rigidbody2D>();
         pc = gm.player.GetComponent<PlayerController>();
         //If game manager not specified, find it
@@ -46,6 +49,15 @@ public class Ball : MonoBehaviour
         if(ballrb.velocity.magnitude > maxSpeed){
             //note: using velocity makes it easily push physics objects away instead of bouncing off of them (as intended)2
                 ballrb.velocity = ballrb.velocity.normalized * maxSpeed;
+        }
+
+        if(lastSwing < swingTimer)
+        {
+            animator.SetBool("Charged", false);
+        }
+        else
+        {
+            animator.SetBool("Charged", true);
         }
     }
     private void FixedUpdate()
