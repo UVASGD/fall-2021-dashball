@@ -84,6 +84,9 @@ public class Ball : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col){
+        if (col.gameObject.name == "0 to 1") {
+			SceneManager.LoadScene("Level1");
+		}
         if (col.gameObject.name == "Goal") {
 			this.transform.position = new Vector3(-10, 0, -1);
 			SceneManager.LoadScene("Level2");

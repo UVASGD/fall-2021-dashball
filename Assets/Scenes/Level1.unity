@@ -2207,19 +2207,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5497589984240683526}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &384291232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384291229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e2e4f792374dda4fbc93d43a873794b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactableType: 1
 --- !u!114 &384291233 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5497589984008248230, guid: c9742289ec4c6d844b2b8caa68fe42d9,
@@ -2230,18 +2217,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51d5e68d61e30284fafa7b2db636eeaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &384291236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384291229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d44371583504f0418894004e615f181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &390261130
@@ -30981,11 +30956,6 @@ PrefabInstance:
       objectReference: {fileID: 302463755}
     - target: {fileID: 5497589984008248230, guid: c9742289ec4c6d844b2b8caa68fe42d9,
         type: 3}
-      propertyPath: dashPower
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497589984008248230, guid: c9742289ec4c6d844b2b8caa68fe42d9,
-        type: 3}
       propertyPath: hitPoints
       value: 100
       objectReference: {fileID: 0}
@@ -30993,26 +30963,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxHealth
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497589984008248230, guid: c9742289ec4c6d844b2b8caa68fe42d9,
-        type: 3}
-      propertyPath: movePower
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497589984008248230, guid: c9742289ec4c6d844b2b8caa68fe42d9,
-        type: 3}
-      propertyPath: maxDashSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497589984008248230, guid: c9742289ec4c6d844b2b8caa68fe42d9,
-        type: 3}
-      propertyPath: maxMoveSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497589984008248230, guid: c9742289ec4c6d844b2b8caa68fe42d9,
-        type: 3}
-      propertyPath: currentMaxSpeed
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9742289ec4c6d844b2b8caa68fe42d9, type: 3}
