@@ -68,6 +68,7 @@ public class enemyAiStill : Destructible
     IEnumerator StartDying(){
         swingTimer = timeToDie * 4;
         damage = 0f;
+        GetComponent<bulletSpawn>().enabled = false;
         yield return new WaitForSeconds(timeToDie);
         Destroy(gameObject);
     }
