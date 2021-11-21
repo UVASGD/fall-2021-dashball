@@ -5,7 +5,7 @@ using Pathfinding;
 
 public class enemyAiPatrol : Destructible
 {
-      //what to chase after
+    //what to chase after
     Transform target;
     bool goToOne = true;
     Vector3 point1;
@@ -20,11 +20,11 @@ public class enemyAiPatrol : Destructible
     //speed
     public float speed = 200f;
     //how many nodes to look ahead
-    public float nextWaypointDistance =.75f;
+    public float nextWaypointDistance = .75f;
     Path path;
     int currentWaypoint = 0;
 
-    bool reachedEndofPath=false;
+    bool reachedEndofPath = false;
     Seeker seeker;
     Rigidbody2D rb;
     //distance enemy will stop tracking player when they get this close (and melee range)
@@ -32,7 +32,7 @@ public class enemyAiPatrol : Destructible
 
 
     //melee enemy variables //from specners work in enemyAi.cs
-      //attack-y stuff
+    //attack-y stuff
     public float damage = 5.0f; //damage per attack
     public float swingTimer = 1.5f; //ie how long between swings
     public float lastSwing = 0; //the actual timer maybe I should use different names lol
@@ -42,71 +42,75 @@ public class enemyAiPatrol : Destructible
         //get components from objects
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        point1 = new Vector3(point1x, point1y,0);
-        point2 = new Vector3(point2x, point2y,0);
+        point1 = new Vector3(point1x, point1y, 0);
+        point2 = new Vector3(point2x, point2y, 0);
         target = GameObject.Find("Player").GetComponent<Transform>();
         //loop to find past
-        InvokeRepeating("UpdatePath", 0f,.5f);
- 
+        InvokeRepeating("UpdatePath", 0f, .5f);
+
     }
 
     void UpdatePath()
     {
-            //only call StartPath if the end of the path ahs allready been reached
-            if(seeker.IsDone() & goToOne)
-              seeker.StartPath(rb.position,point1,OnPathComplete);
+        //only call StartPath if the end of the path ahs allready been reached
+        if (seeker.IsDone())
+            if (goToOne)
+                seeker.StartPath(rb.position, point1, OnPathComplete);
             else
-            seeker.StartPath(rb.position,point2,OnPathComplete);
-   }
+                seeker.StartPath(rb.position, point2, OnPathComplete);
+    }
 
     void OnPathComplete(Path p)
     {
         //resets path
-        if(!p.error)
+        if (!p.error)
         {
-            path=p;
-            currentWaypoint =0;
+            path = p;
+            currentWaypoint = 0;
         }
     }
 
-    void FixedUpdate()
-    {   
+    void Update()
+    {
         //increments the swing timer
-        lastSwing += Time.deltaTime;
+        //lastSwing += Time.deltaTime;
 
 
         //check if should attack
-        float toTarget = Vector2.Distance(rb.position, target.position);
+        //float toTarget = Vector2.Distance(rb.position, target.position);
         //if (stopChase <= toTarget)
         //Attack(target.GetComponent<Destructible>());
 
 
-     
-
-
-        //check if reached end of path or to closer to player
-        if(currentWaypoint >= path.vectorPath.Count)
+        if (path == null)
         {
-            reachedEndofPath =true;
-            goToOne = !goToOne;
             return;
         }
 
 
-   if (path==null || reachedEndofPath ==true)
+        //check if reached end of path or to closer to player
+        if (currentWaypoint >= path.vectorPath.Count)
         {
-            if(goToOne)
-            seeker.StartPath(rb.position,point1,OnPathComplete);
-            else
-            seeker.StartPath(rb.position,point2,OnPathComplete);
-            reachedEndofPath =false;
-             return;
+            reachedEndofPath = true;
+            goToOne = !goToOne;
+            return;
         }
+
+        if (reachedEndofPath == true)
+        {
+            if (goToOne)
+                seeker.StartPath(rb.position, point1, OnPathComplete);
+            else
+                seeker.StartPath(rb.position, point2, OnPathComplete);
+            reachedEndofPath = false;
+            return;
+        }
+
 
         //havent reached end of path
         else
         {
-            reachedEndofPath =false;
+            reachedEndofPath = false;
         }
         //use path to get vector of motion
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
@@ -116,17 +120,19 @@ public class enemyAiPatrol : Destructible
 
         //check distance to next node on path
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        
+
         //check if move far enough to next node on path and update if so
-        if(distance < nextWaypointDistance)
+        if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
         }
     }
 
     //taken from spencers work in enemyAi.cs
-    private void Attack(Destructible target){
-        if (lastSwing >= swingTimer){
+    private void Attack(Destructible target)
+    {
+        if (lastSwing >= swingTimer)
+        {
             target.TakeDamage(damage);
             lastSwing = 0;
         }
@@ -138,11 +144,13 @@ public class enemyAiPatrol : Destructible
         return stopChase;
     }
 
-    public override void Die() {
-		StartCoroutine(StartDying());
+    public override void Die()
+    {
+        StartCoroutine(StartDying());
     }
 
-    IEnumerator StartDying(){
+    IEnumerator StartDying()
+    {
         swingTimer = timeToDie * 4;
         damage = 0f;
         speed = 0f;

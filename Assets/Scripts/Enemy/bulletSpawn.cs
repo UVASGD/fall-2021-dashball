@@ -63,6 +63,6 @@ Transform target;
     spawnPoint.rotation = Quaternion.Euler(Vector3.forward * (angle));
 
         //fire bullet from spawnPoint
-    Instantiate(bullet,spawnPoint.position, spawnPoint.rotation);
+//    Instantiate(bullet,spawnPoint.position, spawnPoint.rotation);
     }
 }

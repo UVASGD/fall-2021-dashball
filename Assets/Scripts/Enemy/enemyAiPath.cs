@@ -57,7 +57,7 @@ public class enemyAiPath : Destructible
         }
     }
 
-    void FixedUpdate()
+    void Update()
     {   
         //increments the swing timer
         lastSwing += Time.deltaTime;
