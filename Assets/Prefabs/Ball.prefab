@@ -141,6 +141,10 @@ MonoBehaviour:
   ballrb: {fileID: 0}
   magnetSpeed: 5
   maxSpeed: 20
+  clips:
+  - {fileID: 8300000, guid: 25929cc64f5291a4abeb1cd42f3527fc, type: 3}
+  - {fileID: 8300000, guid: 2496e6b138f985a43826faafb680c109, type: 3}
+  - {fileID: 8300000, guid: b678a2db24a5591469d407d123793669, type: 3}
   ballWalls: []
   animator: {fileID: 0}
   damage: 25
