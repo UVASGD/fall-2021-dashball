@@ -19,6 +19,8 @@ public class PlayerController : Destructible
 
     public GameManager gm;
 
+    public Animator animator;
+
     //im sorta copying this from last year's project im 90% sure some of it is not necessary
     Rigidbody2D rb2d;
     public float currentMaxSpeed;
@@ -48,6 +50,7 @@ public class PlayerController : Destructible
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         RecallActive = false;
     }
 
@@ -86,6 +89,10 @@ public class PlayerController : Destructible
 
 		Debug.DrawRay(transform.position, aim.normalized * crosshairDistance, Color.red);
 
+        Vector2 dir = rb2d.velocity;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        animator.SetFloat("Angle", angle);
+        animator.SetFloat("VelMag", rb2d.velocity.magnitude);
 		// position crosshairs
 		//if(aim.magnitude < crosshairDistance) { 
 			//crosshairs.transform.position = (Vector2) transform.position + aim;
@@ -133,6 +140,7 @@ public class PlayerController : Destructible
     }
 
     public override void Die() {
+        animator.SetBool("Dying", true);
 		StartCoroutine(StartDying());
     }
 

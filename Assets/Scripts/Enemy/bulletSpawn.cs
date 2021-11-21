@@ -60,7 +60,7 @@ Transform target;
     else
     angle -= Random.Range(offsetMin,offsetMax);
     //rotate by angle
-    spawnPoint.rotation = Quaternion.Euler(Vector3.forward * (angle));
+    spawnPoint.rotation = Quaternion.Euler(Vector3.forward * (angle-90));
 
         //fire bullet from spawnPoint
     Instantiate(bullet,spawnPoint.position, spawnPoint.rotation);

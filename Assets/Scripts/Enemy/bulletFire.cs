@@ -10,8 +10,9 @@ public Rigidbody2D rb;
  public float damage= 5.0f; //damage per attack
 void Start ()
 {
-    //fires bullet with it's force
-    rb.velocity = transform.right*bulletForce;
+        //fires bullet with it's force
+        //rb.velocity = transform.right*bulletForce;
+        rb.velocity = transform.up * bulletForce;
 }
 
 

@@ -22,6 +22,8 @@ public class enemyAiPath : Destructible
     //distance enemy will stop tracking player when they get this close (and melee range)
     public float stopChase = 2.0f;
 
+    public Animator animator;
+
 
     //melee enemy variables //from specners work in enemyAi.cs
       //attack-y stuff
@@ -35,6 +37,7 @@ public class enemyAiPath : Destructible
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Player").GetComponent<Transform>();
+        animator = GetComponent<Animator>();
         //loop to find past
         InvokeRepeating("UpdatePath", 0f,.5f);
  
@@ -127,6 +130,7 @@ public class enemyAiPath : Destructible
     }
 
     public override void Die() {
+        animator.SetBool("Dying", true);
 		StartCoroutine(StartDying());
     }
 

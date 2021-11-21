@@ -223,7 +223,8 @@ MonoBehaviour:
   point1y: 20
   point2x: -3
   point2y: 9
-  timeToDie: 1
+  timeToDie: 1.33
+  animator: {fileID: 2732288466713711246}
   speed: 200
   nextWaypointDistance: 0.7
   stopChase: 0.8
@@ -347,7 +348,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 53fbfbd042e135a49a8447536d6d21b1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

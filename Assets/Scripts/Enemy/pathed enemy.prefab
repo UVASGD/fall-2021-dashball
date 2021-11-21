@@ -191,8 +191,9 @@ MonoBehaviour:
   hitPoints: 25
   speed: 400
   nextWaypointDistance: 0.7
-  timeToDie: 1
+  timeToDie: 1.33
   stopChase: 1.5
+  animator: {fileID: 4462721543238401752}
   damage: 4
   swingTimer: 1.5
   lastSwing: 0
@@ -313,7 +314,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 53fbfbd042e135a49a8447536d6d21b1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

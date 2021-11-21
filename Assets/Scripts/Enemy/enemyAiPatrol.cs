@@ -17,6 +17,9 @@ public class enemyAiPatrol : Destructible
 
     public float timeToDie;
 
+    //For animation
+    public Animator animator;
+
     //speed
     public float speed = 200f;
     //how many nodes to look ahead
@@ -45,6 +48,7 @@ public class enemyAiPatrol : Destructible
         point1 = new Vector3(point1x, point1y,0);
         point2 = new Vector3(point2x, point2y,0);
         target = GameObject.Find("Player").GetComponent<Transform>();
+        animator = GetComponent<Animator>();
         //loop to find past
         InvokeRepeating("UpdatePath", 0f,.5f);
  
@@ -139,6 +143,7 @@ public class enemyAiPatrol : Destructible
     }
 
     public override void Die() {
+        animator.SetBool("Dying", true);
 		StartCoroutine(StartDying());
     }
 
