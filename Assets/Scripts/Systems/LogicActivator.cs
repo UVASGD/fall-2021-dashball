@@ -81,8 +81,8 @@ public class LogicActivator : MonoBehaviour
         //If not a red button
         if (type != 0 && collision.gameObject.GetComponent<LogicInteractable>())
         {
-            //If blue button or sticky
-            if (type == 1 || type == 3)
+            //If blue button or sticky && correct type of object
+            if ((type == 1 || type == 3) && collision.gameObject.GetComponent<LogicInteractable>().interactableType == whoInteracts)
             {
                 on = false;
                 animator.SetBool("On", on);

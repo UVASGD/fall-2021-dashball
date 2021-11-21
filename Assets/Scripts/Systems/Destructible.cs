@@ -44,4 +44,8 @@ public class Destructible : MonoBehaviour
         }
     }
 
+    public virtual void UpdateHealth() {
+
+    }
+
 }
