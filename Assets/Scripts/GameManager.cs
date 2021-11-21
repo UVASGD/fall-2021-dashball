@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         catch {}
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "StartMenu") {
-		    SceneManager.LoadScene("Level1");
+		    SceneManager.LoadScene("Level0");
         }
         if (scene.name == "Victory" || scene.name == "Defeat") {
 		    SceneManager.LoadScene("StartMenu");
