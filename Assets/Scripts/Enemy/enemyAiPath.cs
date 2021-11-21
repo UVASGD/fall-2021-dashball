@@ -10,13 +10,13 @@ public class enemyAiPath : Destructible
     //speed
     public float speed = 200f;
     //how many nodes to look ahead
-    public float nextWaypointDistance =.75f;
+    public float nextWaypointDistance = .75f;
     Path path;
     int currentWaypoint = 0;
 
     public float timeToDie;
 
-    bool reachedEndofPath=false;
+    bool reachedEndofPath = false;
     Seeker seeker;
     Rigidbody2D rb;
     //distance enemy will stop tracking player when they get this close (and melee range)
@@ -24,7 +24,7 @@ public class enemyAiPath : Destructible
 
 
     //melee enemy variables //from specners work in enemyAi.cs
-      //attack-y stuff
+    //attack-y stuff
     public float damage = 5.0f; //damage per attack
     public float swingTimer = 1.5f; //ie how long between swings
     public float lastSwing = 0; //the actual timer maybe I should use different names lol
@@ -36,29 +36,30 @@ public class enemyAiPath : Destructible
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Player").GetComponent<Transform>();
         //loop to find past
-        InvokeRepeating("UpdatePath", 0f,.5f);
- 
+        InvokeRepeating("UpdatePath", 0f, .5f);
+
     }
 
     void UpdatePath()
     {
-            //only call StartPath if the end of the path ahs allready been reached
-            if(seeker.IsDone())
-              seeker.StartPath(rb.position,target.position,OnPathComplete);
+
+        //only call StartPath if the end of the path ahs allready been reached
+        if (seeker.IsDone())
+            seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
 
     void OnPathComplete(Path p)
     {
         //resets path
-        if(!p.error)
+        if (!p.error)
         {
-            path=p;
-            currentWaypoint =0;
+            path = p;
+            currentWaypoint = 0;
         }
     }
 
     void Update()
-    {   
+    {
         //increments the swing timer
         lastSwing += Time.deltaTime;
 
@@ -66,31 +67,44 @@ public class enemyAiPath : Destructible
         float toTarget = Vector2.Distance(rb.position, target.position);
 
 
-       
+        if (path == null)
+        {
+            return;
+        }
+
+
+        GraphNode node1 = AstarPath.active.GetNearest(rb.position, NNConstraint.Default).node;
+        GraphNode node2 = AstarPath.active.GetNearest(target.position, NNConstraint.Default).node;
+        if (!PathUtilities.IsPathPossible(node1, node2))
+        {
+            path = null;
+            return;
+        }
+
 
 
         //resets path if no path or reached end of path and is far enough away from player
-        if ((path==null || reachedEndofPath ==true) & stopChase <= toTarget)
+        if ((reachedEndofPath == true) & stopChase <= toTarget)
         {
-            seeker.StartPath(rb.position,target.position,OnPathComplete);
-            reachedEndofPath =false;
+            seeker.StartPath(rb.position, target.position, OnPathComplete);
+            reachedEndofPath = false;
             return;
         }
         //check if reached end of path or to closer to player
-     
-       
-        if(currentWaypoint >= path.vectorPath.Count & stopChase > toTarget)
+
+
+        if (currentWaypoint >= path.vectorPath.Count & stopChase > toTarget)
         {
             //deal melee damage (add indicator)
             Attack(target.GetComponent<Destructible>());
-            
-            reachedEndofPath =true;
+
+            reachedEndofPath = true;
             return;
         }
         //havent reached end of path
         else
         {
-            reachedEndofPath =false;
+            reachedEndofPath = false;
         }
         //use path to get vector of motion
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
@@ -100,21 +114,23 @@ public class enemyAiPath : Destructible
 
         //check distance to next node on path
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        
-         //if(//distance to greate from current way put add strong force pushing back toward it (normalize vector towards it like with crosshair)
+
+        //if(//distance to greate from current way put add strong force pushing back toward it (normalize vector towards it like with crosshair)
         //      rb2d.AddForce(aim.normalized * crosshairDistance * dashPower, ForceMode2D.Impulse); 
         //)
 
         //check if move far enough to next node on path and update if so
-        if(distance < nextWaypointDistance)
+        if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
         }
     }
 
     //taken from spencers work in enemyAi.cs
-    private void Attack(Destructible target){
-        if (lastSwing >= swingTimer){
+    private void Attack(Destructible target)
+    {
+        if (lastSwing >= swingTimer)
+        {
             target.TakeDamage(damage);
             lastSwing = 0;
         }
@@ -126,11 +142,13 @@ public class enemyAiPath : Destructible
         return stopChase;
     }
 
-    public override void Die() {
-		StartCoroutine(StartDying());
+    public override void Die()
+    {
+        StartCoroutine(StartDying());
     }
 
-    IEnumerator StartDying(){
+    IEnumerator StartDying()
+    {
         swingTimer = timeToDie * 4;
         damage = 0f;
         speed = 0f;
