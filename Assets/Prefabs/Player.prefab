@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 5497589984008248230}
   - component: {fileID: 5497589984008248229}
   - component: {fileID: 5497589984008248228}
+  - component: {fileID: 2563436621729452978}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -205,6 +206,7 @@ MonoBehaviour:
   aim: {x: 0, y: 0}
   fire: 0
   gm: {fileID: 0}
+  animator: {fileID: 2563436621729452978}
   currentMaxSpeed: 10
   maxMoveSpeed: 10
   maxDashSpeed: 20
@@ -220,7 +222,7 @@ MonoBehaviour:
   RecallActive: 0
   ballEntered1: 0
   ballEntered2: 0
-  timeToDie: 0
+  timeToDie: 1.37
 --- !u!58 &5497589984008248229
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -258,6 +260,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &2563436621729452978
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5497589984008248219}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a8cbdef564250c429dde0a17dedc82b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5497589984076116633
 GameObject:
   m_ObjectHideFlags: 0
