@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -3358460093287410238, guid: ecf0e2dbe3ecd674fb60889899b68909,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -141,6 +141,8 @@ MonoBehaviour:
   ballrb: {fileID: 0}
   magnetSpeed: 5
   maxSpeed: 20
+  ballWalls: []
+  animator: {fileID: 0}
   damage: 25
   swingTimer: 1
   lastSwing: 0
@@ -157,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2e4f792374dda4fbc93d43a873794b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableType: 0
 --- !u!95 &5695307013518380062
 Animator:
   serializedVersion: 3
