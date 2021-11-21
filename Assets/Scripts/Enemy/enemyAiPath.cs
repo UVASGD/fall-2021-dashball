@@ -148,6 +148,7 @@ public class enemyAiPath : Destructible
         swingTimer = timeToDie * 4;
         damage = 0f;
         speed = 0f;
+        GetComponent<bulletSpawn>().enabled = false;
         yield return new WaitForSeconds(timeToDie);
         Destroy(gameObject);
     }
