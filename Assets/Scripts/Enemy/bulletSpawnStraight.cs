@@ -46,9 +46,9 @@ public class bulletSpawnStraight : MonoBehaviour
     {
         float angle;
         if (!up)
-            angle = 270;
+            angle = 180;
         else
-            angle = 90;
+            angle = 0;
 
         //rotate by angle
         spawnPoint.rotation = Quaternion.Euler(Vector3.forward * (angle));

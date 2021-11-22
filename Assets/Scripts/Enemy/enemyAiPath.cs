@@ -25,7 +25,7 @@ public class enemyAiPath : Destructible
     //distance enemy will stop tracking player when they get this close (and melee range)
     public float stopChase = 2.0f;
 
-
+    public bool alwaysTrack = false;
     public Animator animator;
 
 
@@ -46,13 +46,14 @@ public class enemyAiPath : Destructible
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         //loop to find past
-            // StartCoroutine(UpdatePath());
-            Debug.Log(gm.isActive);
-            InvokeRepeating("UpdatePath", 0f,.5f);
-            // healthbar.SetHealth(hitPoints, maxHealth);
- 
+        // StartCoroutine(UpdatePath());
+        Debug.Log(gm.isActive);
+        InvokeRepeating("UpdatePath", 0f, .5f);
+        // healthbar.SetHealth(hitPoints, maxHealth);
+
     }
 
     void UpdatePath()
@@ -74,70 +75,72 @@ public class enemyAiPath : Destructible
     }
 
     void Update()
-    {   
-        if (gm.isActive == true) {
+    {
+        if (gm.isActive == true)
+        {
 
-        //increments the swing timer
+            //increments the swing timer
             lastSwing += Time.deltaTime;
 
-        //check distance from enemy to player to stop crowding
-        float toTarget = Vector2.Distance(rb.position, target.position);
+            //check distance from enemy to player to stop crowding
+            float toTarget = Vector2.Distance(rb.position, target.position);
 
 
-        if (path == null)
-        {
-            return;
-        }
+            if (path == null)
+            {
+                return;
+            }
+
+            if (!alwaysTrack)
+            {
+                GraphNode node1 = AstarPath.active.GetNearest(rb.position, NNConstraint.Default).node;
+                GraphNode node2 = AstarPath.active.GetNearest(target.position, NNConstraint.Default).node;
+                if (!PathUtilities.IsPathPossible(node1, node2))
+                {
+                    path = null;
+                    return;
+                }
+            }
 
 
-        GraphNode node1 = AstarPath.active.GetNearest(rb.position, NNConstraint.Default).node;
-        GraphNode node2 = AstarPath.active.GetNearest(target.position, NNConstraint.Default).node;
-        if (!PathUtilities.IsPathPossible(node1, node2))
-        {
-            path = null;
-            return;
-        }
+            //resets path if no path or reached end of path and is far enough away from player
+            if ((reachedEndofPath == true) & stopChase <= toTarget)
+            {
+                seeker.StartPath(rb.position, target.position, OnPathComplete);
+                reachedEndofPath = false;
+                return;
+            }
+            //check if reached end of path or to closer to player
 
 
+            if (currentWaypoint >= path.vectorPath.Count & stopChase > toTarget)
+            {
+                //deal melee damage (add indicator)
+                Attack(target.GetComponent<Destructible>());
 
-        //resets path if no path or reached end of path and is far enough away from player
-        if ((reachedEndofPath == true) & stopChase <= toTarget)
-        {
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
-            reachedEndofPath = false;
-            return;
-        }
-        //check if reached end of path or to closer to player
-
-
-        if (currentWaypoint >= path.vectorPath.Count & stopChase > toTarget)
-        {
-            //deal melee damage (add indicator)
-            Attack(target.GetComponent<Destructible>());
-
-            reachedEndofPath = true;
-            return;
-        }
-        //havent reached end of path
-        else
-        {
-            reachedEndofPath = false;
-        }
-        //use path to get vector of motion
+                reachedEndofPath = true;
+                return;
+            }
+            //havent reached end of path
+            else
+            {
+                reachedEndofPath = false;
+            }
+            //use path to get vector of motion
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        //apply force to object in direction
+            //apply force to object in direction
             Vector2 force = direction * speed * Time.deltaTime;
             rb.AddForce(force);
 
-        //check distance to next node on path
+            //check distance to next node on path
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        
-         //if(//distance to greate from current way put add strong force pushing back toward it (normalize vector towards it like with crosshair)
-        //      rb2d.AddForce(aim.normalized * crosshairDistance * dashPower, ForceMode2D.Impulse); 
-        //)
 
-        //check if move far enough to next node on path and update if so
-            if(distance < nextWaypointDistance)
+            //if(//distance to greate from current way put add strong force pushing back toward it (normalize vector towards it like with crosshair)
+            //      rb2d.AddForce(aim.normalized * crosshairDistance * dashPower, ForceMode2D.Impulse); 
+            //)
+
+            //check if move far enough to next node on path and update if so
+            if (distance < nextWaypointDistance)
             {
                 currentWaypoint++;
             }
@@ -159,9 +162,10 @@ public class enemyAiPath : Destructible
         return stopChase;
     }
 
-    public override void Die() {
+    public override void Die()
+    {
         animator.SetBool("Dying", true);
-		StartCoroutine(StartDying());
+        StartCoroutine(StartDying());
     }
 
     IEnumerator StartDying()
@@ -174,7 +178,8 @@ public class enemyAiPath : Destructible
         Destroy(gameObject);
     }
 
-    public override void UpdateHealth() {
+    public override void UpdateHealth()
+    {
         healthbar.value = hitPoints;
     }
 

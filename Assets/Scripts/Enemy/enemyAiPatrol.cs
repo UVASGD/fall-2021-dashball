@@ -77,11 +77,11 @@ public class enemyAiPatrol : Destructible
     void Update()
     {
         //increments the swing timer
-        //lastSwing += Time.deltaTime;
+        lastSwing += Time.deltaTime;
 
 
         //check if should attack
-        //float toTarget = Vector2.Distance(rb.position, target.position);
+        float toTarget = Vector2.Distance(rb.position, target.position);
         //if (stopChase <= toTarget)
         //Attack(target.GetComponent<Destructible>());
 

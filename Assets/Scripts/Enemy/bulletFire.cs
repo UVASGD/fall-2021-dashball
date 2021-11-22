@@ -23,8 +23,9 @@ void OnTriggerEnter2D(Collider2D target)
     return;
 
     //for somereason really hates camerabounds of unmoving camera
-    if(target.name != "CameraBounds")
+    if(target.name != "CameraBounds" )
     {
+        
         //checks to see if hit player
         if(target.name.Equals("Player"))
             Attack(target.GetComponent<Destructible>());

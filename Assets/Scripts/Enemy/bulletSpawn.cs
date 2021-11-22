@@ -32,6 +32,7 @@ public GameManager gm;
         //get components from objects
         target = GameObject.Find("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
  void Update ()
@@ -66,6 +67,6 @@ public GameManager gm;
     spawnPoint.rotation = Quaternion.Euler(Vector3.forward * (angle-90));
 
         //fire bullet from spawnPoint
-//    Instantiate(bullet,spawnPoint.position, spawnPoint.rotation);
+    Instantiate(bullet,spawnPoint.position, spawnPoint.rotation);
     }
 }
