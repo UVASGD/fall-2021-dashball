@@ -13,6 +13,7 @@ public class bulletSpawn : MonoBehaviour
  public Transform spawnPoint;
 //what to fire at
 Transform target;
+public GameManager gm;
 
  //attack-y stuff (taken from spencers work on enemyAI)
     public float shootTimer; //ie how long between shots
@@ -35,17 +36,19 @@ Transform target;
 
  void Update ()
  {
+  if (gm.isActive) {
     //check to see if shoot
     //incrememnt shot timer
     lastFire += Time.deltaTime;
 
     animator.SetFloat("TimeLeft", shootTimer - lastFire);
     //fire if timer higher than shot clock
-      if (lastFire >= shootTimer){
-        lastFire = 0;
-        Shoot();
-      }
- }
+    if (lastFire >= shootTimer){
+      lastFire = 0;
+      Shoot();
+    }
+  }
+}
 
     void Shoot()
     {
@@ -60,7 +63,7 @@ Transform target;
     else
     angle -= Random.Range(offsetMin,offsetMax);
     //rotate by angle
-    spawnPoint.rotation = Quaternion.Euler(Vector3.forward * (angle));
+    spawnPoint.rotation = Quaternion.Euler(Vector3.forward * (angle-90));
 
         //fire bullet from spawnPoint
 //    Instantiate(bullet,spawnPoint.position, spawnPoint.rotation);

@@ -14,11 +14,17 @@ public class Ball : MonoBehaviour
 
     public float maxSpeed;
 
+    //sounds
+    public AudioClip[] clips = new AudioClip[3]; //0: discharge, 1: recharge, 2: bonk
+    private bool hasRecharged;
+
     //ball walls
     public Collider2D[] ballWalls;
 
+    public Animator animator;
+
     //attack properties
-    public float damage = 25;
+    public float damage = 10;
     public float swingTimer = 1; //ie how long between "attacks" (just so it doesnt do a lot of little attacks, may have to modify this system)
     public float lastSwing = 0; //the actual timer maybe I should use different names lol
 
@@ -28,15 +34,19 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         ballrb = GetComponent<Rigidbody2D>();
         pc = gm.player.GetComponent<PlayerController>();
         //If game manager not specified, find it
         if (!gm)
             gm = GameObject.FindObjectOfType<GameManager>();
         //Changed this so you dont need to find name of game manager anymore, just the component
+        
         foreach(Collider2D i in ballWalls){
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), i);
         }
+
+        hasRecharged = false;
     }
 
     // Update is called once per frame
@@ -47,6 +57,14 @@ public class Ball : MonoBehaviour
             //note: using velocity makes it easily push physics objects away instead of bouncing off of them (as intended)2
                 ballrb.velocity = ballrb.velocity.normalized * maxSpeed;
         }
+
+        if(!hasRecharged && lastSwing > swingTimer)
+        {
+            animator.SetBool("Charged", true);
+            hasRecharged = true;
+            AudioSource.PlayClipAtPoint(clips[1], transform.position);
+        }
+    
     }
     private void FixedUpdate()
     {
@@ -72,6 +90,9 @@ public class Ball : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col){
+        if (col.gameObject.name == "0 to 1") {
+			SceneManager.LoadScene("Level1");
+		}
         if (col.gameObject.name == "Goal") {
 			this.transform.position = new Vector3(-10, 0, -1);
 			SceneManager.LoadScene("Level2");
@@ -99,6 +120,7 @@ public class Ball : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
+        AudioSource.PlayClipAtPoint(clips[2], transform.position);
         //If player hit
         if (col.gameObject.GetComponent<PlayerController>())
         {
@@ -114,7 +136,11 @@ public class Ball : MonoBehaviour
 
     private void Attack(Destructible target){
         if (lastSwing >= swingTimer){
+            AudioSource.PlayClipAtPoint(clips[0], transform.position);
+            hasRecharged = false;
             target.TakeDamage(damage);
+            target.UpdateHealth();
+            animator.SetBool("Charged", false);
             lastSwing = 0;
         }
     }

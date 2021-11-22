@@ -1636,10 +1636,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4656212073672737534, guid: cdedc9e5c682e9242b3efd870aa0b7b8,
         type: 3}
-      propertyPath: point2y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6071130604794827584, guid: cdedc9e5c682e9242b3efd870aa0b7b8,
+
+      propertyPath: boundBox
+      value: 
+      objectReference: {fileID: 1317502919}
+    - target: {fileID: 5806017286969273995, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c269b01b514d711479a3f17033647bea, type: 3}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
         type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1867,14 +1873,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c0ec436c4d5d44f830ee99187004ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  bullet: {fileID: 4020132765657539517, guid: f5ec8184511d4fb46ad3de49d6756c33, type: 3}
-  spawnPoint: {fileID: 1033785533}
-  shootTimer: 2.3
-  lastFire: 0
-  up: 1
---- !u!1001 &367483254
-PrefabInstance:
+  target: {fileID: 1410059285}
+  smoothingSpeed: 1
+  offset: {x: 0, y: 0, z: -10}
+  boundBox: {fileID: 1317502919}
+--- !u!1 &1251373413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1251373414}
+  - component: {fileID: 1251373415}
+  m_Layer: 0
+  m_Name: 2 to 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1251373414
+Transform:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:

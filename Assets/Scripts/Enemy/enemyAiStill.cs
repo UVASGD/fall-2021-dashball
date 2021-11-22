@@ -13,6 +13,9 @@ public class enemyAiStill : Destructible
 
     public float timeToDie;
 
+    // Animator for death animation purposes
+    public Animator animator;
+
     //melee enemy variables //from specners work in enemyAi.cs
       //attack-y stuff
     public float damage = 5.0f; //damage per attack
@@ -24,7 +27,8 @@ public class enemyAiStill : Destructible
         //get components from objects
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Player").GetComponent<Transform>();
-        }
+        animator = GetComponent<Animator>();
+    }
 
     void FixedUpdate()
     {   
@@ -57,12 +61,14 @@ public class enemyAiStill : Destructible
     }
 
     public override void Die() {
+        animator.SetBool("Dying", true);
 		StartCoroutine(StartDying());
     }
 
     IEnumerator StartDying(){
         swingTimer = timeToDie * 4;
         damage = 0f;
+        GetComponent<bulletSpawn>().enabled = false;
         yield return new WaitForSeconds(timeToDie);
         Destroy(gameObject);
     }

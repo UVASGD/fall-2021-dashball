@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.UI;
 
 public class enemyAiPath : Destructible
 {
@@ -13,14 +14,22 @@ public class enemyAiPath : Destructible
     public float nextWaypointDistance = .75f;
     Path path;
     int currentWaypoint = 0;
+    public GameManager gm;
+    public Slider healthbar;
 
     public float timeToDie;
 
     bool reachedEndofPath = false;
     Seeker seeker;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     //distance enemy will stop tracking player when they get this close (and melee range)
     public float stopChase = 2.0f;
+
+
+    public Animator animator;
+
+
+    // public EnemyHealthBar healthbar;
 
 
     //melee enemy variables //from specners work in enemyAi.cs
@@ -32,12 +41,18 @@ public class enemyAiPath : Destructible
     void Start()
     {
         //get components from objects
+
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Player").GetComponent<Transform>();
-        //loop to find past
-        InvokeRepeating("UpdatePath", 0f, .5f);
+        animator = GetComponent<Animator>();
 
+        //loop to find past
+            // StartCoroutine(UpdatePath());
+            Debug.Log(gm.isActive);
+            InvokeRepeating("UpdatePath", 0f,.5f);
+            // healthbar.SetHealth(hitPoints, maxHealth);
+ 
     }
 
     void UpdatePath()
@@ -59,9 +74,11 @@ public class enemyAiPath : Destructible
     }
 
     void Update()
-    {
+    {   
+        if (gm.isActive == true) {
+
         //increments the swing timer
-        lastSwing += Time.deltaTime;
+            lastSwing += Time.deltaTime;
 
         //check distance from enemy to player to stop crowding
         float toTarget = Vector2.Distance(rb.position, target.position);
@@ -107,25 +124,25 @@ public class enemyAiPath : Destructible
             reachedEndofPath = false;
         }
         //use path to get vector of motion
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         //apply force to object in direction
-        Vector2 force = direction * speed * Time.deltaTime;
-        rb.AddForce(force);
+            Vector2 force = direction * speed * Time.deltaTime;
+            rb.AddForce(force);
 
         //check distance to next node on path
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-        //if(//distance to greate from current way put add strong force pushing back toward it (normalize vector towards it like with crosshair)
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        
+         //if(//distance to greate from current way put add strong force pushing back toward it (normalize vector towards it like with crosshair)
         //      rb2d.AddForce(aim.normalized * crosshairDistance * dashPower, ForceMode2D.Impulse); 
         //)
 
         //check if move far enough to next node on path and update if so
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
+            if(distance < nextWaypointDistance)
+            {
+                currentWaypoint++;
+            }
         }
     }
-
     //taken from spencers work in enemyAi.cs
     private void Attack(Destructible target)
     {
@@ -142,9 +159,9 @@ public class enemyAiPath : Destructible
         return stopChase;
     }
 
-    public override void Die()
-    {
-        StartCoroutine(StartDying());
+    public override void Die() {
+        animator.SetBool("Dying", true);
+		StartCoroutine(StartDying());
     }
 
     IEnumerator StartDying()
@@ -152,8 +169,13 @@ public class enemyAiPath : Destructible
         swingTimer = timeToDie * 4;
         damage = 0f;
         speed = 0f;
+        GetComponent<bulletSpawn>().enabled = false;
         yield return new WaitForSeconds(timeToDie);
         Destroy(gameObject);
+    }
+
+    public override void UpdateHealth() {
+        healthbar.value = hitPoints;
     }
 
 }

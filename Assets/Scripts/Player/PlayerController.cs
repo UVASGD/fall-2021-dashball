@@ -19,6 +19,11 @@ public class PlayerController : Destructible
 
     public GameManager gm;
 
+    public Animator animator;
+
+    //sounds
+    public AudioClip[] clips = new AudioClip[4]; //0: dash, 1: hit wall/ball, 2: take damage, 3: dying
+
     //im sorta copying this from last year's project im 90% sure some of it is not necessary
     Rigidbody2D rb2d;
     public float currentMaxSpeed;
@@ -48,6 +53,7 @@ public class PlayerController : Destructible
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         RecallActive = false;
     }
 
@@ -57,7 +63,8 @@ public class PlayerController : Destructible
         if (gm.isActive) {
             movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            fire = Input.GetMouseButton(0);    
+            fire = Input.GetMouseButton(0);  
+            InvokeRepeating("RegenerateStamina", 0f, .5f);
         }
 
     }
@@ -69,10 +76,10 @@ public class PlayerController : Destructible
 
         if(fire && lastDash >= dashCD){
             StartCoroutine(Deccelerate());
+            AudioSource.PlayClipAtPoint(clips[0], transform.position);
             rb2d.velocity = new Vector2(0,0);
             rb2d.AddForce(aim.normalized * crosshairDistance * dashPower, ForceMode2D.Impulse);
             lastDash = 0f;
-            
         }
         lastDash += Time.deltaTime;
 
@@ -86,6 +93,10 @@ public class PlayerController : Destructible
 
 		Debug.DrawRay(transform.position, aim.normalized * crosshairDistance, Color.red);
 
+        Vector2 dir = rb2d.velocity;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        animator.SetFloat("Angle", angle);
+        animator.SetFloat("VelMag", rb2d.velocity.magnitude);
 		// position crosshairs
 		//if(aim.magnitude < crosshairDistance) { 
 			//crosshairs.transform.position = (Vector2) transform.position + aim;
@@ -110,16 +121,21 @@ public class PlayerController : Destructible
         
     }
 
+    private void OnCollisionEnter2D(Collision2D col){
+        //if we hit anything we go "ping"
+        AudioSource.PlayClipAtPoint(clips[1], transform.position);
+    }
+
     IEnumerator PowerUp(float duration) {
-        movePower *= 2f;
-        maxMoveSpeed *= 2f;
-        maxDashSpeed *= 2f;
-        currentMaxSpeed *= 2f;
+        movePower += 5f;
+        maxMoveSpeed += 5f;
+        maxDashSpeed += 5f;
+        currentMaxSpeed += 5f;
         yield return new WaitForSeconds(duration);
-        maxMoveSpeed /= 2f;
-        maxDashSpeed /= 2f;
-        currentMaxSpeed /= 2f;
-        movePower /= 2;
+        maxMoveSpeed -= 5f;
+        maxDashSpeed -= 5f;
+        currentMaxSpeed -= 5f;
+        movePower -= 5f;
     }
 
     IEnumerator Deccelerate() {
@@ -133,6 +149,8 @@ public class PlayerController : Destructible
     }
 
     public override void Die() {
+        animator.SetBool("Dying", true);
+        AudioSource.PlayClipAtPoint(clips[3], transform.position);
 		StartCoroutine(StartDying());
     }
 
@@ -142,4 +160,19 @@ public class PlayerController : Destructible
         SceneManager.LoadScene("Defeat");
     }
 
+    public override void TakeDamage(float amount)
+    {
+        this.hitPoints -= amount;
+		gm.UpdateHealth(hitPoints);
+        //so kind of you to bring this line over commented out <3
+		AudioSource.PlayClipAtPoint(clips[2], transform.position);
+        if (hitPoints <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void RegenerateStamina() {
+        gm.UpdateStamina(lastDash);
+    }
 }

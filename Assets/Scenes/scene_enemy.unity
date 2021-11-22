@@ -8283,7 +8283,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 700
   hitPoints: 700
-  gm: {fileID: 0}
 --- !u!95 &603911959
 Animator:
   serializedVersion: 3
@@ -8587,7 +8586,7 @@ PrefabInstance:
     - target: {fileID: 6313181544486643748, guid: 0e5b019ea598f76479e0b174c8b2e1f0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.36
+      value: 25.12
       objectReference: {fileID: 0}
     - target: {fileID: 6313181544486643748, guid: 0e5b019ea598f76479e0b174c8b2e1f0,
         type: 3}
@@ -8947,6 +8946,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.37
       objectReference: {fileID: 0}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 603911964}
+    - target: {fileID: 5853590780784964041, guid: eec488e3889462e48ad8f4f3a2be1d8a,
+        type: 3}
+      propertyPath: boundBox
+      value: 
+      objectReference: {fileID: 390261131}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec488e3889462e48ad8f4f3a2be1d8a, type: 3}
 --- !u!114 &1337118267 stripped
@@ -9095,7 +9104,7 @@ PrefabInstance:
     - target: {fileID: 6071130604794827584, guid: cdedc9e5c682e9242b3efd870aa0b7b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.6
+      value: 12.62
       objectReference: {fileID: 0}
     - target: {fileID: 6071130604794827584, guid: cdedc9e5c682e9242b3efd870aa0b7b8,
         type: 3}
