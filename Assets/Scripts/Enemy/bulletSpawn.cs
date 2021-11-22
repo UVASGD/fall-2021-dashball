@@ -32,6 +32,7 @@ public GameManager gm;
         //get components from objects
         target = GameObject.Find("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
  void Update ()
