@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
     private void Start()
     {
         s = transform.localScale;
-        inverted = new bool[activators.Length];
+        //inverted = new bool[activators.Length];
     }
 
     private void FixedUpdate()

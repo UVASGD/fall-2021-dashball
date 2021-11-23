@@ -60,6 +60,43 @@ public class PortalIn : MonoBehaviour
                 StartCoroutine(disablePortal(1.5f));
             }
         }
+///copyed to double 
+
+if (collision.gameObject.name == "Ball" && this.name == "PortalIn3") {
+            Vector2 tp = GameObject.Find("PortalOut3").transform.position;
+            ball.transform.position = tp;
+            playerControl.ballEntered1 =  true;
+        }
+        if (collision.gameObject.name == "Ball" && this.name == "PortalIn4") {
+            Vector2 tp = GameObject.Find("PortalOut4").transform.position;
+            ball.transform.position = tp;
+            playerControl.ballEntered2 =  true;
+        }
+        if (collision.gameObject.name == "Player" && this.name == "PortalIn3") {
+            Vector2 tp = GameObject.Find("PortalOut3").transform.position;
+            player.transform.position = tp;
+            anim.SetBool("out", true);
+            StartCoroutine(disablePortal(1.5f));
+        }
+        if (collision.gameObject.name == "Player" && this.name == "PortalIn4") {
+            Vector2 tp = GameObject.Find("PortalOut4").transform.position;
+            player.transform.position = tp;
+            anim.SetBool("out", true);
+            StartCoroutine(disablePortal(1.5f));
+        }
+        if (collision.gameObject.name == "Player" && this.name == "PortalOut3") {
+            if (playerControl.ballEntered1 == true) {
+                anim.SetBool("out", true);
+                StartCoroutine(disablePortal(1.5f));
+            }
+        }
+        if (collision.gameObject.name == "Player" && this.name == "PortalOut4") {
+            if (playerControl.ballEntered2 == true) {
+                anim.SetBool("out", true);
+                StartCoroutine(disablePortal(1.5f));
+            }
+        }
+
     }
 
     IEnumerator disablePortal(float duration) {
