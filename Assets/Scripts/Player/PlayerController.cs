@@ -49,6 +49,9 @@ public class PlayerController : Destructible
     //DEATH
     public float timeToDie;
 
+    // Heal
+    public float healPower = 20f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -118,7 +121,23 @@ public class PlayerController : Destructible
             RecallActive = true;
             collision.gameObject.SetActive(false);
         }
-        
+
+        if (collision.gameObject.name == "Heal") {
+            // Debug.Log("Heal");
+            Heal(healPower);
+            collision.gameObject.SetActive(false);
+        }  
+    }
+
+    public override void Heal(float amount) {
+        float sum = this.hitPoints += amount;
+        if (sum >= maxHealth) {
+            this.hitPoints = maxHealth;
+        }
+        else {
+            this.hitPoints = sum;
+        }
+        gm.UpdateHealth(hitPoints);
     }
 
     private void OnCollisionEnter2D(Collision2D col){
