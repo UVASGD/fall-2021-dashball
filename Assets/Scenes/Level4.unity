@@ -8114,7 +8114,7 @@ PrefabInstance:
     - target: {fileID: 6084843169441265458, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
       propertyPath: m_text
-      value: 'Level 4: BIG BANG'
+      value: 'Level 4: Boss fight'
       objectReference: {fileID: 0}
     - target: {fileID: 6084843169441265459, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
