@@ -8636,12 +8636,12 @@ PrefabInstance:
     - target: {fileID: 6084843169513400078, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -152
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 6084843169513400078, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -73
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 6084843169616975983, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
@@ -8676,12 +8676,12 @@ PrefabInstance:
     - target: {fileID: 6084843169707052153, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 382
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 6084843169707052153, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -73
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 6084843169963492555, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
@@ -8716,12 +8716,12 @@ PrefabInstance:
     - target: {fileID: 6084843170089061242, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 152
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6084843170089061242, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -73
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 6084843170443686284, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
@@ -8761,12 +8761,12 @@ PrefabInstance:
     - target: {fileID: 6084843170548452900, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -382
+      value: -700
       objectReference: {fileID: 0}
     - target: {fileID: 6084843170548452900, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -73
+      value: -100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5406e0841674654bafeac019925f62d, type: 3}
@@ -9729,10 +9729,9 @@ GameObject:
   - component: {fileID: 1980611272}
   - component: {fileID: 1980611271}
   - component: {fileID: 1980611270}
-  - component: {fileID: 1980611269}
   - component: {fileID: 1980611268}
   m_Layer: 0
-  m_Name: Activator_Ring1/Button
+  m_Name: Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9754,27 +9753,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4.3438215, y: 4.3438215}
   m_Direction: 0
---- !u!50 &1980611269
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980611267}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!95 &1980611270
 Animator:
   serializedVersion: 3
