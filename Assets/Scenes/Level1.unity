@@ -9770,6 +9770,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7343121320506476241, guid: cab6dc333a0d1b840a97baf8267bdbed,
         type: 3}
+      propertyPath: inverted.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343121320506476241, guid: cab6dc333a0d1b840a97baf8267bdbed,
+        type: 3}
       propertyPath: activators.Array.size
       value: 4
       objectReference: {fileID: 0}
