@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class boxBullet : MonoBehaviour
+public class boxBullet : Destructible
 {
     public int damage = 25;
     float distance = 0.0f;
@@ -19,6 +19,9 @@ public class boxBullet : MonoBehaviour
     bool goNext = false;
     float respawnTimer;
     double respawnWait = 4;
+
+    public AudioClip audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -166,7 +169,7 @@ public class boxBullet : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             //rb.AddForce(new Vector2(10, 0) * movePower);
         }
-        Debug.Log(gameObject.name);
+        //Debug.Log(gameObject.name);
         //   gameObject.GetComponent<SpriteRenderer>().color = new Color (Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1);
         destroyable = true;
         comeBack = false;
@@ -178,6 +181,7 @@ public class boxBullet : MonoBehaviour
         //checks to see if hit player
         if (target.gameObject.name.Equals("Player"))
         {
+            AudioSource.PlayClipAtPoint(audio, transform.position);
             Attack(target.gameObject.GetComponent<Destructible>());
         //   target.gameObject.GetComponent<Rigidbody2D>().velocity = target.gameObject.GetComponent<Rigidbody2D>().velocity * -1;
             //*removes object
@@ -188,13 +192,12 @@ public class boxBullet : MonoBehaviour
             }
        //     */
         }
-        else if (target.gameObject.name.Equals("Ball"))
+    }
+    public override void TakeDamage(float amount){        
+        if (destroyable)
         {
-            if (destroyable)
-            {
-                gameObject.transform.position = new Vector2(100, 100);
-                destroyed = true;
-            }
+            gameObject.transform.position = new Vector2(100, 100);
+            destroyed = true;
         }
     }
     //deals damage based on bullet damage

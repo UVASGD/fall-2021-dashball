@@ -135,6 +135,9 @@ public class Ball : MonoBehaviour
     }
 
     private void Attack(Destructible target){
+        if(target.GetComponent<boxBullet>() && !target.GetComponent<boxBullet>().destroyable){
+            return;
+        }
         if (lastSwing >= swingTimer){
             AudioSource.PlayClipAtPoint(clips[0], transform.position);
             hasRecharged = false;
