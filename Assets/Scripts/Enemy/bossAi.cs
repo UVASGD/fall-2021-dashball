@@ -20,7 +20,7 @@ public class bossAi : MonoBehaviour
 
     public List<int> toRemove = new List<int>();
 
-    public AudioClip[] clips = new AudioClip[4]; //0: attack start, 1: take damage, 2: death, 3: laugh when injures player
+    public AudioClip[] clips = new AudioClip[3]; //0: attack start, 1: take damage, 2: death, (3: laugh when injures player: this is "audio" in boxBullet)
 
     double waitTime = 2;
     void Start()
@@ -136,6 +136,7 @@ public class bossAi : MonoBehaviour
 
      IEnumerator FadinOut() {
         phase = -1;
+
         foreach (GameObject bossSqaure in bossList)
         {
             //if (bossSqaure.GetComponent<boxBullet>().destroyable == true)

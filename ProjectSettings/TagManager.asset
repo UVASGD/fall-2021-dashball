@@ -7,6 +7,9 @@ TagManager:
   - levelTile
   - enemy
   - bossSquare
+  - Boost
+  - Recall
+  - Heal
   layers:
   - Default
   - TransparentFX
