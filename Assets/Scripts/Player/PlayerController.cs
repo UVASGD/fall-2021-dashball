@@ -111,18 +111,18 @@ public class PlayerController : Destructible
 	}
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.name == "Boost" ) {
+        if (collision.gameObject.tag == "Boost" ) {
             StartCoroutine(PowerUp(10f));            
             collision.gameObject.SetActive(false);
             Debug.Log("Speedi Boi");
         }
 
-        if (collision.gameObject.name == "Recall" ) {
+        if (collision.gameObject.tag == "Recall" ) {
             RecallActive = true;
             collision.gameObject.SetActive(false);
         }
 
-        if (collision.gameObject.name == "Heal") {
+        if (collision.gameObject.tag == "Heal") {
             // Debug.Log("Heal");
             Heal(healPower);
             collision.gameObject.SetActive(false);
