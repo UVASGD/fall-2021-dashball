@@ -62,7 +62,7 @@ public class PortalIn : MonoBehaviour
         }
 ///copyed to double 
 
-if (collision.gameObject.name == "Ball" && this.name == "PortalIn3") {
+        if (collision.gameObject.name == "Ball" && this.name == "PortalIn3") {
             Vector2 tp = GameObject.Find("PortalOut3").transform.position;
             ball.transform.position = tp;
             playerControl.ballEntered1 =  true;
@@ -97,7 +97,31 @@ if (collision.gameObject.name == "Ball" && this.name == "PortalIn3") {
             }
         }
 
+        if (collision.gameObject.name == "Ball" && this.name == "PortalIn5") {
+            Vector2 tp = GameObject.Find("PortalOut5").transform.position;
+            ball.transform.position = tp;
+            playerControl.ballEntered1 =  true;
+        }
+        if (collision.gameObject.name == "Ball" && this.name == "PortalIn6") {
+            Vector2 tp = GameObject.Find("PortalOut6").transform.position;
+            ball.transform.position = tp;
+            playerControl.ballEntered2 =  true;
+        }
+        if (collision.gameObject.name == "Player" && this.name == "PortalIn5") {
+            Vector2 tp = GameObject.Find("PortalOut5").transform.position;
+            player.transform.position = tp;
+            anim.SetBool("out", true);
+            StartCoroutine(disablePortal(1.5f));
+        }
+        if (collision.gameObject.name == "Player" && this.name == "PortalIn6") {
+            Vector2 tp = GameObject.Find("PortalOut6").transform.position;
+            player.transform.position = tp;
+            anim.SetBool("out", true);
+            StartCoroutine(disablePortal(1.5f));
+        }
     }
+
+    
 
     IEnumerator disablePortal(float duration) {
         yield return new WaitForSeconds(duration);
