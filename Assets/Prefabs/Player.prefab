@@ -202,8 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d5e68d61e30284fafa7b2db636eeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  hitPoints: 0
+  maxHealth: 100
+  hitPoints: 100
   movement: {x: 0, y: 0}
   aim: {x: 0, y: 0}
   fire: 0
