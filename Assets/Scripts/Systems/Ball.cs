@@ -76,7 +76,7 @@ public class Ball : MonoBehaviour
 
         if(pc.RecallActive==true){
             ballrb.velocity = new Vector2(0, 0);
-            transform.position =  new Vector2(gm.player.transform.position.x, gm.player.transform.position.y -1.5f);
+            transform.position =  new Vector2(gm.player.transform.position.x +1f, gm.player.transform.position.y-1f);
             pc.RecallActive = false;
         }
 
@@ -135,6 +135,9 @@ public class Ball : MonoBehaviour
     }
 
     private void Attack(Destructible target){
+        if(target.GetComponent<boxBullet>() && !target.GetComponent<boxBullet>().destroyable){
+            return;
+        }
         if (lastSwing >= swingTimer){
             AudioSource.PlayClipAtPoint(clips[0], transform.position);
             hasRecharged = false;
