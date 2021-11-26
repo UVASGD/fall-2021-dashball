@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1590323937260343518}
   - component: {fileID: 1590323937260343517}
   - component: {fileID: 1590323937260343488}
+  - component: {fileID: 5645605848916885600}
   m_Layer: 0
   m_Name: BoostPad
   m_TagString: Untagged
@@ -72,7 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f5c57bb8df6f1004bac141e32a021d3a, type: 3}
+  m_Sprite: {fileID: -3737558178662673639, guid: 55e9c121d93fc964b9164af7ed35a4e6,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,18 +98,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.005934, y: 0.0599885}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1.99}
+    oldSize: {x: 3.5, y: 3.5}
     newSize: {x: 2.1875, y: 2.1875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.99}
+  m_Size: {x: 2.154284, y: 2.2074823}
   m_EdgeRadius: 0
 --- !u!114 &1590323937260343488
 MonoBehaviour:
@@ -124,3 +126,22 @@ MonoBehaviour:
   force: 10
   lastBoost: 0
   boostTimer: 0
+--- !u!95 &5645605848916885600
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590323937260343516}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d37ec1fcd7a64fd449880a4c35eed080, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
