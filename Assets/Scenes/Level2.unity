@@ -1746,14 +1746,14 @@ Transform:
   - {fileID: 1731217674}
   - {fileID: 2007207341}
   - {fileID: 749238460}
-  - {fileID: 2013796972}
   - {fileID: 1279151994}
   - {fileID: 21082057}
-  - {fileID: 1757406838}
-  - {fileID: 2043521033}
-  - {fileID: 509771587}
   - {fileID: 2066038651}
+  - {fileID: 2013796972}
+  - {fileID: 2043521033}
   - {fileID: 1827883010}
+  - {fileID: 509771587}
+  - {fileID: 1757406838}
   - {fileID: 606070303}
   - {fileID: 1713685373}
   - {fileID: 1705166499}
@@ -28741,6 +28741,11 @@ PrefabInstance:
     - target: {fileID: 7343121320506476241, guid: cab6dc333a0d1b840a97baf8267bdbed,
         type: 3}
       propertyPath: onlyOneNeeded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343121320506476241, guid: cab6dc333a0d1b840a97baf8267bdbed,
+        type: 3}
+      propertyPath: destroyOnClose
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7343121320506476241, guid: cab6dc333a0d1b840a97baf8267bdbed,
