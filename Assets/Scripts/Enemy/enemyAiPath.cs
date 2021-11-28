@@ -49,8 +49,6 @@ public class enemyAiPath : Destructible
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         //loop to find past
-        // StartCoroutine(UpdatePath());
-        Debug.Log(gm.isActive);
         InvokeRepeating("UpdatePath", 0f, .5f);
         // healthbar.SetHealth(hitPoints, maxHealth);
 

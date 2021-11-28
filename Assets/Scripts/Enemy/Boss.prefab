@@ -144,9 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 2
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710601735723963
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,9 +294,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 3
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710601740500739
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +372,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8712262853591511663, guid: cea9f8073e2adcd428e42fe0205a9d3c,
+  m_Sprite: {fileID: -3894600924309706229, guid: d2081d359afbb11478a746a2cf12c241,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -569,9 +575,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 2
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710601793517225
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,9 +725,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 1
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710601839674439
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,11 +811,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8cd872db8de43d4e98c12b5c8699b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
   hp: 4
   bossList: []
   boxNumbers: 
   numbersHolder: 
   toRemove: 
+  clips:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &3802710601857026358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,9 +1096,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 4
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710601981978785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,9 +1246,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 1
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602056928988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,9 +1396,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 3
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602099202897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,9 +1546,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 1
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602244857518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,6 +1737,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7600a5f6b13c09c4792c03b59c740a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   TheBoss: {fileID: 3802710601839674439}
 --- !u!1 &3802710602320996463
 GameObject:
@@ -1853,9 +1884,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 2
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602339888750
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,9 +2034,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 3
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602367996885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,9 +2184,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 1
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602424524258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,9 +2334,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 1
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602470288464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,7 +2525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782298b0d72e7774bb07c5af7a8facd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TheBoss: {fileID: 0}
 --- !u!1 &3802710602508927940
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,9 +2669,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 4
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602513746565
 GameObject:
   m_ObjectHideFlags: 0
@@ -2774,9 +2819,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 4
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602613512599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2921,9 +2969,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 1
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602653341701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3068,9 +3119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 3
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602780194922
 GameObject:
   m_ObjectHideFlags: 0
@@ -3215,9 +3269,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 4
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710602878547617
 GameObject:
   m_ObjectHideFlags: 0
@@ -3493,9 +3550,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 2
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710603042758726
 GameObject:
   m_ObjectHideFlags: 0
@@ -3681,6 +3741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7600a5f6b13c09c4792c03b59c740a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   TheBoss: {fileID: 3802710601839674439}
 --- !u!1 &3802710603104121655
 GameObject:
@@ -3826,9 +3888,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 2
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710603118037010
 GameObject:
   m_ObjectHideFlags: 0
@@ -3973,9 +4038,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 2
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710603129077807
 GameObject:
   m_ObjectHideFlags: 0
@@ -4120,9 +4188,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 3
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710603160602341
 GameObject:
   m_ObjectHideFlags: 0
@@ -4267,9 +4338,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 3
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710603214327722
 GameObject:
   m_ObjectHideFlags: 0
@@ -4414,9 +4488,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 3
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710603265856193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4602,6 +4679,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7600a5f6b13c09c4792c03b59c740a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   TheBoss: {fileID: 3802710601839674439}
 --- !u!1 &3802710603287294060
 GameObject:
@@ -4788,6 +4867,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7600a5f6b13c09c4792c03b59c740a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   TheBoss: {fileID: 3802710601839674439}
 --- !u!1 &3802710603297869518
 GameObject:
@@ -4933,9 +5014,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 4
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710603392802585
 GameObject:
   m_ObjectHideFlags: 0
@@ -5080,9 +5164,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 1
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710603456439727
 GameObject:
   m_ObjectHideFlags: 0
@@ -5227,9 +5314,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 2
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710603525894565
 GameObject:
   m_ObjectHideFlags: 0
@@ -5374,9 +5464,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 4
   destroyable: 0
+  audio: {fileID: 0}
 --- !u!1 &3802710603552854558
 GameObject:
   m_ObjectHideFlags: 0
@@ -5652,6 +5745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138df1fb0a62f0e4282cf61f6ff06c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  hitPoints: 0
   damage: 15
   direction: 4
   destroyable: 0
+  audio: {fileID: 0}
