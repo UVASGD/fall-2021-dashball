@@ -40533,6 +40533,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 6084843168796327590, guid: a5406e0841674654bafeac019925f62d,
+        type: 3}
+      propertyPath: m_ScaleFactor
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6084843169356072202, guid: a5406e0841674654bafeac019925f62d,
         type: 3}
       propertyPath: m_AnchorMax.x

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class enemyAiStill : Destructible
 {
@@ -15,6 +16,9 @@ public class enemyAiStill : Destructible
 
     // Animator for death animation purposes
     public Animator animator;
+
+    // Healthbar
+    public Slider healthbar;
 
     //melee enemy variables //from specners work in enemyAi.cs
       //attack-y stuff
@@ -71,6 +75,11 @@ public class enemyAiStill : Destructible
         GetComponent<bulletSpawn>().enabled = false;
         yield return new WaitForSeconds(timeToDie);
         Destroy(gameObject);
+    }
+
+    public override void UpdateHealth()
+    {
+        healthbar.value = hitPoints;
     }
 
 }
