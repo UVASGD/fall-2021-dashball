@@ -226,10 +226,13 @@ MonoBehaviour:
   neutral: {fileID: 0}
   dash: {fileID: 0}
   pos: {fileID: 0}
+  iFrameCounter: 0
+  iFrameDuration: 1
   RecallActive: 0
   ballEntered1: 0
   ballEntered2: 0
   timeToDie: 1.37
+  healPower: 20
 --- !u!58 &5497589984008248229
 CircleCollider2D:
   m_ObjectHideFlags: 0
