@@ -76,6 +76,7 @@ public class Ball : MonoBehaviour
 
         if(pc.RecallActive==true){
             ballrb.velocity = new Vector2(0, 0);
+            tiedStickyButton = null;
             transform.position =  new Vector2(gm.player.transform.position.x +1f, gm.player.transform.position.y-1f);
             pc.RecallActive = false;
         }

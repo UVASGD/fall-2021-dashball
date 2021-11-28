@@ -135,6 +135,13 @@ public class enemyAiPatrol : Destructible
         }
     }
 
+    void OnCollisionEnter2D(Collision2D col){
+       
+        if (col.gameObject.name == "Player"){
+            Attack(col.gameObject.GetComponent<Destructible>());
+        }
+    }
+
     //taken from spencers work in enemyAi.cs
     private void Attack(Destructible target)
     {
