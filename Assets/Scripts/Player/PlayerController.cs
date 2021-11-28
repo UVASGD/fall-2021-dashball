@@ -112,8 +112,6 @@ public class PlayerController : Destructible
 		//} else {
 		crosshairs.transform.position = (Vector2) transform.position + (aim.normalized * crosshairDistance);
 		//}
-
-		
 	}
 
     private void OnTriggerEnter2D(Collider2D collision) {
