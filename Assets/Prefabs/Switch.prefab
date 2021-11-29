@@ -99,7 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2803424425890255242}
   on: 0
+  whoInteracts: 0
   type: 2
+  clip: {fileID: 8300000, guid: b119f70029bfabe4a82fb747595959e9, type: 3}
 --- !u!61 &6637107238374469782
 BoxCollider2D:
   m_ObjectHideFlags: 0

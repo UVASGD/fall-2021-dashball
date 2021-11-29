@@ -13,6 +13,8 @@ public class LogicActivator : MonoBehaviour
     public int type = 0; //0 = red button (remains active even when stepped off), 1 = blue button (deactivates if stepped off), 2 = switch (step on to toggle on/off), 3 = sticky
     Color c;
 
+    public AudioClip clip; //the clack of a press
+
     private void Start()
     {
 
@@ -42,6 +44,7 @@ public class LogicActivator : MonoBehaviour
         //If the ball has collided with the button
         if (collision.gameObject.GetComponent<LogicInteractable>() && (whoInteracts == 2 || collision.gameObject.GetComponent<LogicInteractable>().interactableType == whoInteracts))
         {
+            AudioSource.PlayClipAtPoint(clip, transform.position); //go clack
             //If this is a switch
             if (type == 2)
             {
@@ -66,7 +69,6 @@ public class LogicActivator : MonoBehaviour
             {
                 on = true;
                 animator.SetBool("On", on);
-
                 /*Color col = c;
                 col.r += 10;
                 col.b += 10;
@@ -84,6 +86,7 @@ public class LogicActivator : MonoBehaviour
             //If blue button or sticky && correct type of object
             if ((type == 1 || type == 3) && collision.gameObject.GetComponent<LogicInteractable>().interactableType == whoInteracts)
             {
+                AudioSource.PlayClipAtPoint(clip, transform.position); // go clack
                 on = false;
                 animator.SetBool("On", on);
                 //GetComponent<SpriteRenderer>().color = c;
