@@ -126,6 +126,7 @@ MonoBehaviour:
   force: 10
   lastBoost: 0
   boostTimer: 0
+  clip: {fileID: 8300000, guid: 06d44100271b3f449b8319305ae341fd, type: 3}
 --- !u!95 &5645605848916885600
 Animator:
   serializedVersion: 3

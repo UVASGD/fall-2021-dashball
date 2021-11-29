@@ -2772,6 +2772,10 @@ MonoBehaviour:
   inverted: 00
   doorSpeed: 15
   onlyOneNeeded: 0
+  destroyOnClose: 0
+  clips:
+  - {fileID: 8300000, guid: f8890b28ceb9da048b876af8d5f8037d, type: 3}
+  - {fileID: 8300000, guid: c344287b27f82d44e99db01df8973143, type: 3}
 --- !u!61 &522864376 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 571657648436290244, guid: 372099295090fc3488dbf95801e84a16,
