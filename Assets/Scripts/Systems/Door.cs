@@ -9,6 +9,10 @@ public class Door : MonoBehaviour
     Vector2 s;
     public float doorSpeed = 15;
     public bool onlyOneNeeded = false;
+    
+    //destroy on close (for pathfinding reasons) set to false by default
+    public bool destroyOnClose = false;
+    float timeHolder = 0.0f;
 
     private void Start()
     {
@@ -65,6 +69,14 @@ public class Door : MonoBehaviour
         {
             //We're in
             transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(s.x, 0), Time.fixedDeltaTime * doorSpeed);
+            timeHolder += Time.deltaTime;
+            
+            //destroy on close (for pathfinding)
+            if(destroyOnClose)
+            {
+            Destroy(gameObject);
+            AstarPath.active.Scan(); 
+            }
         }
         else
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.UI;
 
 public class enemyAiPatrol : Destructible
 {
@@ -19,6 +20,8 @@ public class enemyAiPatrol : Destructible
 
     //For animation
     public Animator animator;
+
+    public Slider healthbar; 
 
     //speed
     public float speed = 200f;
@@ -132,6 +135,13 @@ public class enemyAiPatrol : Destructible
         }
     }
 
+    void OnCollisionEnter2D(Collision2D col){
+       
+        if (col.gameObject.name == "Player"){
+            Attack(col.gameObject.GetComponent<Destructible>());
+        }
+    }
+
     //taken from spencers work in enemyAi.cs
     private void Attack(Destructible target)
     {
@@ -161,6 +171,11 @@ public class enemyAiPatrol : Destructible
         GetComponent<bulletSpawn>().enabled = false;
         yield return new WaitForSeconds(timeToDie);
         Destroy(gameObject);
+    }
+
+    public override void UpdateHealth()
+    {
+        healthbar.value = hitPoints;
     }
 
 }

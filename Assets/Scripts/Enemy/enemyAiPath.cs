@@ -49,8 +49,6 @@ public class enemyAiPath : Destructible
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         //loop to find past
-        // StartCoroutine(UpdatePath());
-        Debug.Log(gm.isActive);
         InvokeRepeating("UpdatePath", 0f, .5f);
         // healthbar.SetHealth(hitPoints, maxHealth);
 
@@ -116,7 +114,7 @@ public class enemyAiPath : Destructible
             if (currentWaypoint >= path.vectorPath.Count & stopChase > toTarget)
             {
                 //deal melee damage (add indicator)
-                Attack(target.GetComponent<Destructible>());
+                //Attack(target.GetComponent<Destructible>());
 
                 reachedEndofPath = true;
                 return;
@@ -146,6 +144,14 @@ public class enemyAiPath : Destructible
             }
         }
     }
+
+    void OnCollisionEnter2D(Collision2D col){
+       
+        if (col.gameObject.name == "Player"){
+            Attack(col.gameObject.GetComponent<Destructible>());
+        }
+    }
+
     //taken from spencers work in enemyAi.cs
     private void Attack(Destructible target)
     {

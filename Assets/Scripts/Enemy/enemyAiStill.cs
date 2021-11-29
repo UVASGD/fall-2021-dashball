@@ -40,12 +40,20 @@ public class enemyAiStill : Destructible
         lastSwing += Time.deltaTime;
 
         //check distance from enemy to player to stop crowding
-        float toTarget = Vector2.Distance(rb.position, target.position); 
+        //float toTarget = Vector2.Distance(rb.position, target.position); 
        
-        if(stopChase > toTarget)
+        /*if(stopChase > toTarget)
         {
             //deal melee damage (add indicator)
             Attack(target.GetComponent<Destructible>());
+        }
+        */
+    }
+
+    void OnCollisionEnter2D(Collision2D col){
+       
+        if (col.gameObject.name == "Player"){
+            Attack(col.gameObject.GetComponent<Destructible>());
         }
     }
 

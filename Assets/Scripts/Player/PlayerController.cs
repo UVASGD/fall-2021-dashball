@@ -39,6 +39,10 @@ public class PlayerController : Destructible
     public Sprite dash;
     public Transform pos;
 
+    //iframes
+    public float iFrameCounter = 0f; //the one that counts up
+    public float iFrameDuration; //how long they are invicinble after being attacked
+
     //power ups/commnads
     public bool RecallActive = false;
 
@@ -69,6 +73,8 @@ public class PlayerController : Destructible
             fire = Input.GetMouseButton(0);  
             InvokeRepeating("RegenerateStamina", 0f, .5f);
         }
+        iFrameCounter += Time.deltaTime;
+        lastDash += Time.deltaTime;
 
     }
 
@@ -84,7 +90,7 @@ public class PlayerController : Destructible
             rb2d.AddForce(aim.normalized * crosshairDistance * dashPower, ForceMode2D.Impulse);
             lastDash = 0f;
         }
-        lastDash += Time.deltaTime;
+
 
         rb2d.AddForce(movement * movePower);
         //rb2d.velocity += (.00000001 + movement) * movePower;
@@ -106,8 +112,6 @@ public class PlayerController : Destructible
 		//} else {
 		crosshairs.transform.position = (Vector2) transform.position + (aim.normalized * crosshairDistance);
 		//}
-
-		
 	}
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -179,15 +183,29 @@ public class PlayerController : Destructible
         SceneManager.LoadScene("Defeat");
     }
 
+    IEnumerator Flash(float x) {
+    while(iFrameCounter < iFrameDuration) {
+        GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(x);
+        GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(x);
+     }
+ }
+
+
     public override void TakeDamage(float amount)
     {
-        this.hitPoints -= amount;
-		gm.UpdateHealth(hitPoints);
-        //so kind of you to bring this line over commented out <3
-		AudioSource.PlayClipAtPoint(clips[2], transform.position);
-        if (hitPoints <= 0)
-        {
-            Die();
+        if(iFrameCounter > iFrameDuration){
+            iFrameCounter = 0f;
+            StartCoroutine(Flash(.1f));
+            this.hitPoints -= amount;
+            gm.UpdateHealth(hitPoints);
+            //so kind of you to bring this line over commented out <3
+            AudioSource.PlayClipAtPoint(clips[2], transform.position);
+            if (hitPoints <= 0)
+            {
+                Die();
+            }
         }
     }
 
