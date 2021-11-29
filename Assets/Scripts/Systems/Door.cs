@@ -14,9 +14,13 @@ public class Door : MonoBehaviour
     public bool destroyOnClose = false;
     float timeHolder = 0.0f;
 
+    public AudioClip[] clips = new AudioClip[2]; //0: door open, 1: door close
+    private bool lastSoundPlayed; //F: last played was close, T: last played was open
+
     private void Start()
     {
         s = transform.localScale;
+        lastSoundPlayed = false;
         //inverted = new bool[activators.Length];
     }
 
@@ -67,6 +71,10 @@ public class Door : MonoBehaviour
 
         if (okayAreWeGucci)
         {
+            if(!lastSoundPlayed){ //if the last sound played was the "closed" sound
+                AudioSource.PlayClipAtPoint(clips[0], transform.position); //go open
+                lastSoundPlayed = true; //the last sound played was the "open" sound
+            }
             //We're in
             transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(s.x, 0), Time.fixedDeltaTime * doorSpeed);
             timeHolder += Time.deltaTime;
@@ -80,6 +88,11 @@ public class Door : MonoBehaviour
         }
         else
         {
+            if(lastSoundPlayed){ //if the last sound played was the "open" sound
+                AudioSource.PlayClipAtPoint(clips[1], transform.position); //go close
+                lastSoundPlayed = false; //the last sound played was the "close" sound
+            }
+
             //We're in't
             transform.localScale = Vector2.Lerp(transform.localScale, s, Time.fixedDeltaTime * doorSpeed);
         }
