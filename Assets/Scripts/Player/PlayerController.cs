@@ -22,7 +22,7 @@ public class PlayerController : Destructible
     public Animator animator;
 
     //sounds
-    public AudioClip[] clips = new AudioClip[4]; //0: dash, 1: hit wall/ball, 2: take damage, 3: dying
+    public AudioClip[] clips = new AudioClip[6]; //0: dash, 1: hit wall/ball, 2: take damage, 3: dying, 4: power up (I actually also put this in an audio source lol), 5: heal ()
 
     //im sorta copying this from last year's project im 90% sure some of it is not necessary
     Rigidbody2D rb2d;
@@ -116,6 +116,7 @@ public class PlayerController : Destructible
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "Boost" ) {
+            GetComponent<AudioSource>().Play();
             StartCoroutine(PowerUp(10f));            
             collision.gameObject.SetActive(false);
             Debug.Log("Speedi Boi");
@@ -129,6 +130,7 @@ public class PlayerController : Destructible
         if (collision.gameObject.tag == "Heal") {
             // Debug.Log("Heal");
             Heal(healPower);
+            AudioSource.PlayClipAtPoint(clips[5], transform.position);
             collision.gameObject.SetActive(false);
         }  
     }
