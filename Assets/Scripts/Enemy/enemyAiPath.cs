@@ -111,7 +111,7 @@ public class enemyAiPath : Destructible
             //check if reached end of path or to closer to player
 
 
-            if (currentWaypoint >= path.vectorPath.Count & stopChase > toTarget)
+            if (currentWaypoint >= path.vectorPath.Count || stopChase > toTarget)
             {
                 //deal melee damage (add indicator)
                 //Attack(target.GetComponent<Destructible>());
