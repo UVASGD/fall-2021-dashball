@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public Button exitButton;
     public Button controlButton;
     public Button aboutButton;
+    public TextMeshProUGUI controlText;
+    public TextMeshProUGUI aboutText;
+    public Button backButton;
 
     public Slider healthBar;
     public Slider dashBar;
@@ -29,16 +32,56 @@ public class GameManager : MonoBehaviour
         try {
             startButton.gameObject.GetComponent<Button>();
             startButton.onClick.AddListener(StartGame);
+
             exitButton.gameObject.GetComponent<Button>();
             exitButton.onClick.AddListener(ExitGame);
+
             controlButton.gameObject.GetComponent<Button>();
+            controlButton.onClick.AddListener(ShowControl);
+
             aboutButton.gameObject.GetComponent<Button>();
+            aboutButton.onClick.AddListener(ShowAbout);
+
+            backButton.gameObject.GetComponent<Button>();
+            backButton.onClick.AddListener(back);
+
             healthBar.gameObject.GetComponent<Slider>();
             dashBar.gameObject.GetComponent<Slider>();
         }
         catch {
 
         }
+    }
+
+    // Control
+    void ShowControl() {
+        levelCoverText.gameObject.SetActive(false);
+        controlText.gameObject.SetActive(true);
+        controlButton.gameObject.SetActive(false);
+        aboutButton.gameObject.SetActive(false);
+        backButton.gameObject.SetActive(true);
+        startButton.gameObject.SetActive(false);
+    }
+
+    // About
+    void ShowAbout() {
+        levelCoverText.gameObject.SetActive(false);
+        aboutText.gameObject.SetActive(true);
+        controlButton.gameObject.SetActive(false);
+        aboutButton.gameObject.SetActive(false);
+        backButton.gameObject.SetActive(true);
+        startButton.gameObject.SetActive(false);
+    }
+
+    // BAck
+    void back() {
+        levelCoverText.gameObject.SetActive(true);
+        controlText.gameObject.SetActive(false);
+        aboutText.gameObject.SetActive(false);
+        controlButton.gameObject.SetActive(true);
+        aboutButton.gameObject.SetActive(true);
+        backButton.gameObject.SetActive(false);
+        startButton.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
